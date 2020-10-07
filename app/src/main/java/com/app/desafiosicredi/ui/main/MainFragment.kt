@@ -10,9 +10,11 @@ import com.app.desafiosicredi.core.base.BaseFragment
 import com.app.desafiosicredi.core.utils.EventObserver
 import com.app.desafiosicredi.core.utils.extensions.isNetworkAvailable
 import com.app.desafiosicredi.databinding.FragmentMainBinding
+import com.app.desafiosicredi.ui.main.adapter.EventsAdapter
+
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
+class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     private val viewModel: MainViewModel by viewModel()
 
     override fun onCreateView(
@@ -30,13 +32,17 @@ class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         if (requireContext().isNetworkAvailable()) {
             viewModel.getEvents()
         } else {
-            Toast.makeText(requireContext(), "SEM CONEXÂO", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "SEM CONEXÃO", Toast.LENGTH_LONG).show()
         }
     }
 
     override fun subscribeUi() {
         viewModel.events.observe(this, EventObserver {
-
+            it.let { products ->
+                with(binding.eventsRecyclerview) {
+                    adapter = EventsAdapter(products)
+                }
+            }
         })
     }
 }

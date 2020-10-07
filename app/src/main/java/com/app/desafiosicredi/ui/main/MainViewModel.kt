@@ -13,9 +13,13 @@ class MainViewModel (private val eventsRepository: EventsRepository) : BaseViewM
     private val _events = MutableLiveData<Event<Events>>()
     val events = Transformations.map(_events) { it }
 
+    private val _progressBarVisibility = MutableLiveData<Boolean>(true)
+    val progressBarVisibility = Transformations.map(_progressBarVisibility) { it }
+
     fun getEvents() = launch {
         when (val response = eventsRepository.getEvents()) {
             is NetworkResponse.Success -> {
+                _progressBarVisibility.postValue(false)
                 _events.postValue(Event(response.body))
             }
             is NetworkResponse.ServerError -> {

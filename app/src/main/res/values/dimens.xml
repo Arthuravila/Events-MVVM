@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="none">0dp</dimen>
+    <dimen name="nano">2dp</dimen>
+    <dimen name="micro">4dp</dimen>
+    <dimen name="small">8dp</dimen>
+    <dimen name="xsmall">12dp</dimen>
+    <dimen name="normal">16dp</dimen>
+    <dimen name="large">24dp</dimen>
+    <dimen name="xlarge">32dp</dimen>
+    <dimen name="xxlarge">48dp</dimen>
+    <dimen name="xxxlarge">64dp</dimen>
+
+    <dimen name="font_size_tiny">6sp</dimen>
+    <dimen name="font_size_xtiny">8sp</dimen>
+    <dimen name="font_size_xxtiny">10sp</dimen>
+    <dimen name="font_size_small">12sp</dimen>
+    <dimen name="font_size_normal">14sp</dimen>
+    <dimen name="font_size_xnormal">16sp</dimen>
+    <dimen name="font_size_xxnormal">18sp</dimen>
+    <dimen name="font_size_large">20sp</dimen>
+    <dimen name="font_size_xlarge">22sp</dimen>
+    <dimen name="font_size_xxlarge">24sp</dimen>
+    <dimen name="font_size_huge">26sp</dimen>
+    <dimen name="font_size_xhuge">28sp</dimen>
+    <dimen name="font_size_xxhuge">30sp</dimen>
+    <dimen name="font_size_giant">32sp</dimen>
+    <dimen name="font_size_xgiant">34sp</dimen>
+    <dimen name="font_size_xxgiant">36sp</dimen>
+    <dimen name="font_size_xxxgiant">40sp</dimen>
+
+</resources>
