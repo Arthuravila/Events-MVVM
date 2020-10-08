@@ -48,5 +48,6 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding>(R.layout.fr
             bundle,
             "mapArgs"
         )
+        transaction.commit()
     }
 }

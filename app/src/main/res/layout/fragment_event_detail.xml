@@ -46,6 +46,15 @@
             bind:imageSet="@{viewModel.eventDetail.peekContent().image}"
             tools:src="@tools:sample/avatars" />
 
+        <FrameLayout
+            android:id="@+id/flMap"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="@dimen/normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_image" />
+
         <TextView
             android:id="@+id/item_title"
             android:layout_width="wrap_content"
@@ -57,7 +66,7 @@
             android:textSize="@dimen/font_size_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_image"
+            app:layout_constraintTop_toBottomOf="@+id/flMap"
             tools:lines="1"
             tools:text="@tools:sample/lorem/random" />
 
@@ -105,14 +114,6 @@
             app:layout_constraintTop_toBottomOf="@+id/item_date"
             tools:lines="1"
             tools:text="@tools:sample/lorem/random" />
-
-        <FrameLayout
-            android:id="@+id/flMap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/normal"
-            app:layout_constraintTop_toBottomOf="@id/item_description" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
