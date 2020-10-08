@@ -26,16 +26,8 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
+        getEventsData()
         return binding.root
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (requireContext().isNetworkAvailable()) {
-            viewModel.getEvents()
-        } else {
-            Toast.makeText(requireContext(), "SEM CONEXÃO", Toast.LENGTH_LONG).show()
-        }
     }
 
     override fun subscribeUi() {
@@ -56,6 +48,14 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
                         id
                     )
                 )
+        }
+    }
+
+    private fun getEventsData() {
+        if (requireContext().isNetworkAvailable()) {
+            viewModel.getEvents()
+        } else {
+            Toast.makeText(requireContext(), "SEM CONEXÃO", Toast.LENGTH_LONG).show()
         }
     }
 }

@@ -16,6 +16,6 @@ fun setProgressBarObserver(view: View, isVisible: Boolean) {
 }
 
 @BindingAdapter("bind:imageSet")
-fun ImageView.setImageView(imageUrl: String) {
+fun ImageView.setImageView(imageUrl: String?) {
         loadImageView(this, imageUrl)
 }

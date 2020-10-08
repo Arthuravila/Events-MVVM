@@ -111,4 +111,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$view_model_live_data_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$common_java8_version"
 
+    // MAPS
+    implementation "com.google.android.gms:play-services-maps:$play_services_maps_version"
+    implementation "com.google.maps.android:android-maps-utils:$maps_utils_version"
+
 }

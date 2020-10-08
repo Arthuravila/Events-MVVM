@@ -32,6 +32,5 @@ class EventsViewModel (private val eventsRepository: EventsRepository) : BaseVie
 
             }
         }
-
     }
 }

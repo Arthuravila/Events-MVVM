@@ -6,8 +6,12 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class People(
-    @SerializedName("picture") val picture: String?,
-    @SerializedName("name") val name: String?,
-    @SerializedName("eventId") val eventId: Int?,
-    @SerializedName("id") val id: Int?
+    @SerializedName("eventId")
+    val eventId: String?,
+    @SerializedName("id")
+    val id: String?,
+    @SerializedName("name")
+    val name: String?,
+    @SerializedName("picture")
+    val picture: String?
 ): Parcelable
