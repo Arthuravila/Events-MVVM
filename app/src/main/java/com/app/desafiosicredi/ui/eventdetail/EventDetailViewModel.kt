@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.app.desafiosicredi.core.base.BaseViewModel
 import com.app.desafiosicredi.core.utils.helpers.Event
+import com.app.desafiosicredi.data.eventdetail.model.CheckinRequestBody
+import com.app.desafiosicredi.data.eventdetail.model.CheckinResponse
 import com.app.desafiosicredi.data.eventdetail.model.EventDetail
 import com.app.desafiosicredi.data.events.repository.EventsRepository
 import com.haroldadmin.cnradapter.NetworkResponse
@@ -13,7 +15,10 @@ class EventDetailViewModel (private val eventsRepository: EventsRepository) : Ba
     private val _eventDetail = MutableLiveData<Event<EventDetail>>()
     val eventDetail = Transformations.map(_eventDetail) { it }
 
-    private val _progressBarVisibility = MutableLiveData<Boolean>(true)
+    private val _checkinResponse = MutableLiveData<CheckinResponse>()
+    val checkinResponse = Transformations.map(_checkinResponse) { it }
+
+    private val _progressBarVisibility = MutableLiveData(true)
     val progressBarVisibility = Transformations.map(_progressBarVisibility) { it }
 
     fun getEventDetail(eventId: String?) = launch {
@@ -21,6 +26,24 @@ class EventDetailViewModel (private val eventsRepository: EventsRepository) : Ba
             is NetworkResponse.Success -> {
                 _progressBarVisibility.postValue(false)
                 _eventDetail.postValue(Event(response.body))
+            }
+            is NetworkResponse.ServerError -> {
+
+            }
+            is NetworkResponse.UnknownError -> {
+
+            }
+            else -> {
+
+            }
+        }
+    }
+
+
+    fun makeCheckin(name: String, email: String, eventId: String?) = launch {
+        when (val response =  eventsRepository.makeCheckin(CheckinRequestBody(name, email, eventId)) ) {
+            is NetworkResponse.Success -> {
+
             }
             is NetworkResponse.ServerError -> {
 

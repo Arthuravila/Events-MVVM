@@ -7,7 +7,9 @@ import com.app.desafiosicredi.R
 import com.app.desafiosicredi.databinding.DialogCheckBinding
 
 class CustomCheckDialog(context: Context) : AlertDialog(context) {
-    fun showDialog() {
+    fun showDialog(
+        itemClicked: (String, String) -> Unit
+    ) {
         val builder = Builder(context)
         val binding = DataBindingUtil.inflate<DialogCheckBinding>(
             layoutInflater,
@@ -18,7 +20,8 @@ class CustomCheckDialog(context: Context) : AlertDialog(context) {
         builder.setView(binding.root)
         val alertDialog: AlertDialog = builder.create()
         binding.btOk.setOnClickListener {
-
+            itemClicked(binding.etName.text.toString(), binding.etEmailAddress.text.toString())
+            alertDialog.cancel()
         }
 
         binding.btCancel.setOnClickListener {

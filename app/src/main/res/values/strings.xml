@@ -6,6 +6,9 @@
     <string name="share">Compartilhar</string>
     <string name="check">Confirmar</string>
 
+    <string name="name">Nome</string>
+    <string name="email">E-mail</string>
+
     <string name="look_at_this">Olhe este evento</string>
     <string name="cancel">Cancelar</string>
     <string name="ok">Ok</string>

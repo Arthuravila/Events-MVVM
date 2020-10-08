@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.app.desafiosicredi.R
 import com.app.desafiosicredi.core.base.BaseFragment
@@ -37,6 +38,10 @@ class EventDetailFragment :
         viewModel.eventDetail.observe(this, EventObserver {
             // setMap(it.latitude, it.longitude)
         })
+
+        viewModel.checkinResponse.observe(this, Observer {
+
+        })
     }
 
     private fun setMap(latitude: Double?, longitude: Double?) {
@@ -59,7 +64,9 @@ class EventDetailFragment :
         }
 
         binding.btCheck.setOnClickListener {
-            CustomCheckDialog(requireContext()).showDialog()
+            CustomCheckDialog(requireContext()).showDialog {name, email ->
+                viewModel.makeCheckin(name, email, args.eventId)
+            }
         }
     }
 

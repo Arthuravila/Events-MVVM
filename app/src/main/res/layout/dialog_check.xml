@@ -34,23 +34,44 @@
             tools:text="@string/check" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutFolderName"
+            android:id="@+id/textInputLayoutName"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/normal"
-            android:hint="@string/check"
+            android:hint="@string/name"
             app:errorTextAppearance="@style/ErrorAppearance"
             app:layout_constraintEnd_toEndOf="@id/guideEnd"
             app:layout_constraintStart_toStartOf="@id/guideStart"
             app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etFolderName"
+                android:id="@+id/etName"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/xxlarge"
+                android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
-                android:inputType="text"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="@dimen/normal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal"
+            android:hint="@string/email"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:errorTextAppearance="@style/ErrorAppearance"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayoutName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
                 android:paddingHorizontal="@dimen/normal" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,7 +87,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btOk"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/guideStart"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayoutFolderName" />
+            app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btOk"
@@ -80,7 +101,7 @@
             app:layout_constraintEnd_toEndOf="@+id/guideEnd"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btCancel"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayoutFolderName" />
+            app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
