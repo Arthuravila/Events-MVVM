@@ -1,6 +1,33 @@
 package com.app.desafiosicredi.ui.main
 
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.app.desafiosicredi.core.base.BaseViewModel
+import com.app.desafiosicredi.core.utils.Event
+import com.app.desafiosicredi.data.events.model.Events
+import com.app.desafiosicredi.data.events.repository.EventsRepository
+import com.haroldadmin.cnradapter.NetworkResponse
+import kotlinx.coroutines.launch
 
-class MainViewModel () : BaseViewModel() {
+class MainViewModel (private val eventsRepository: EventsRepository) : BaseViewModel() {
+    private val _events = MutableLiveData<Event<Events>>()
+    val events = Transformations.map(_events) { it }
+
+    fun getEvents() = launch {
+        when (val response = eventsRepository.getEvents()) {
+            is NetworkResponse.Success -> {
+                _events.postValue(Event(response.body))
+            }
+            is NetworkResponse.ServerError -> {
+
+            }
+            is NetworkResponse.UnknownError -> {
+
+            }
+            else -> {
+
+            }
+        }
+
+    }
 }

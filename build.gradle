@@ -8,15 +8,16 @@ buildscript {
     ext.nav_version_ktx = '2.3.0'
     ext.material_version = '1.2.1'
     ext.fragment_version = '1.2.4'
-    ext.cardview_version = '1.0.0'
     ext.glide_version = '4.9.0'
     ext.view_model_live_data_version = '2.2.0'
     ext.nav_version = '2.3.0'
+    ext.common_java8_version = '2.2.0'
 
     repositories {
         google()
         jcenter()
     }
+
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -28,6 +29,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
 }
 
