@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Desafio Sicredi</string>
-    <string name="title_main_fragment">Main</string>
+    <string name="title_events_fragment">Events</string>
+    <string name="title_event_detail_fragment">Event Detail</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.app.desafiosicredi.ui.main
+package com.app.desafiosicredi.ui.events
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -9,7 +9,7 @@ import com.app.desafiosicredi.data.events.repository.EventsRepository
 import com.haroldadmin.cnradapter.NetworkResponse
 import kotlinx.coroutines.launch
 
-class MainViewModel (private val eventsRepository: EventsRepository) : BaseViewModel() {
+class EventsViewModel (private val eventsRepository: EventsRepository) : BaseViewModel() {
     private val _events = MutableLiveData<Event<Events>>()
     val events = Transformations.map(_events) { it }
 

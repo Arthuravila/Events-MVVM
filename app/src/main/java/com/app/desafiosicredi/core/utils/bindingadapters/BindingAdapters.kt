@@ -6,11 +6,6 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.app.desafiosicredi.core.utils.loadImageView
 
-@BindingAdapter("url")
-fun setImage(view: ImageView, url: String?) {
-
-}
-
 @BindingAdapter("bind:progressBarObserver")
 fun setProgressBarObserver(view: View, isVisible: Boolean) {
     if (isVisible) {

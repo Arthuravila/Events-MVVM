@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.app.desafiosicredi.ui.main.MainViewModel" />
+            type="com.app.desafiosicredi.ui.events.EventsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
