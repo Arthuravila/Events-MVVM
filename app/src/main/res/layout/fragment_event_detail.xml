@@ -46,15 +46,6 @@
             bind:imageSet="@{viewModel.eventDetail.peekContent().image}"
             tools:src="@tools:sample/avatars" />
 
-        <FrameLayout
-            android:id="@+id/flMap"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="@dimen/normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_image" />
-
         <TextView
             android:id="@+id/item_title"
             android:layout_width="wrap_content"
@@ -66,7 +57,7 @@
             android:textSize="@dimen/font_size_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flMap"
+            app:layout_constraintTop_toBottomOf="@+id/item_image"
             tools:lines="1"
             tools:text="@tools:sample/lorem/random" />
 
@@ -76,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small"
             android:paddingHorizontal="@dimen/small"
-            android:text="@{viewModel.eventDetail.peekContent().price.toString()}"
+            bind:currencyText="@{viewModel.eventDetail.peekContent().price}"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="@dimen/font_size_normal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/normal"
             android:paddingHorizontal="@dimen/small"
-            android:text="@{viewModel.eventDetail.peekContent().date.toString()}"
+            bind:date="@{viewModel.eventDetail.peekContent().date}"
             android:textColor="@android:color/black"
             android:textSize="@dimen/font_size_normal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -114,6 +105,15 @@
             app:layout_constraintTop_toBottomOf="@+id/item_date"
             tools:lines="1"
             tools:text="@tools:sample/lorem/random" />
+
+        <FrameLayout
+            android:id="@+id/flMap"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="@dimen/normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

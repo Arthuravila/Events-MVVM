@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small"
                 android:paddingHorizontal="@dimen/small"
-                android:text="@{item.price.toString()}"
+                bind:currencyText="@{item.price}"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textSize="@dimen/font_size_normal"
                 app:layout_constraintEnd_toEndOf="parent"

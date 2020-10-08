@@ -26,14 +26,12 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding>(R.layout.fr
         binding.viewModel = viewModel
         (activity as MainActivity).setToolbarIcon()
         viewModel.getEventDetail(args.eventId)
-
-
         return binding.root
     }
 
     override fun subscribeUi() {
         viewModel.eventDetail.observe(this, EventObserver {
-            setMap(it.latitude, it.longitude)
+            // setMap(it.latitude, it.longitude)
         })
     }
 
