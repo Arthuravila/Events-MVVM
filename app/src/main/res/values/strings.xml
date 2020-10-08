@@ -3,4 +3,11 @@
     <string name="title_events_fragment">Events</string>
     <string name="title_event_detail_fragment">Event Detail</string>
 
+    <string name="share">Compartilhar</string>
+    <string name="check">Confirmar</string>
+
+    <string name="look_at_this">Olhe este evento</string>
+    <string name="cancel">Cancelar</string>
+    <string name="ok">Ok</string>
+
 </resources>

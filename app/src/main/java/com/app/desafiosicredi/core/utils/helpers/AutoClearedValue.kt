@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.app.desafiosicredi.core.utils
+package com.app.desafiosicredi.core.utils.helpers
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver

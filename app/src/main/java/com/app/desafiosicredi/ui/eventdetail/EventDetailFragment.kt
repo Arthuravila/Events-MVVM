@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.app.desafiosicredi.R
 import com.app.desafiosicredi.core.base.BaseFragment
-import com.app.desafiosicredi.core.utils.EventObserver
+import com.app.desafiosicredi.core.utils.CustomCheckDialog
+import com.app.desafiosicredi.core.utils.helpers.EventObserver
+import com.app.desafiosicredi.core.utils.openShareDialog
 import com.app.desafiosicredi.databinding.FragmentEventDetailBinding
 import com.app.desafiosicredi.ui.main.MainActivity
 import com.google.android.gms.maps.model.LatLng
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class EventDetailFragment : BaseFragment<FragmentEventDetailBinding>(R.layout.fragment_event_detail) {
+class EventDetailFragment :
+    BaseFragment<FragmentEventDetailBinding>(R.layout.fragment_event_detail) {
     private val viewModel: EventDetailViewModel by viewModel()
     private val args: EventDetailFragmentArgs by navArgs()
 
@@ -26,6 +29,7 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding>(R.layout.fr
         binding.viewModel = viewModel
         (activity as MainActivity).setToolbarIcon()
         viewModel.getEventDetail(args.eventId)
+        setListeners()
         return binding.root
     }
 
@@ -47,5 +51,22 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding>(R.layout.fr
             "mapArgs"
         )
         transaction.commit()
+    }
+
+    private fun setListeners() {
+        binding.btShare.setOnClickListener {
+            showShareDialog()
+        }
+
+        binding.btCheck.setOnClickListener {
+            CustomCheckDialog(requireContext()).showDialog()
+        }
+    }
+
+    private fun showShareDialog() {
+        openShareDialog(
+            requireContext(),
+            getString(R.string.look_at_this)
+        )
     }
 }

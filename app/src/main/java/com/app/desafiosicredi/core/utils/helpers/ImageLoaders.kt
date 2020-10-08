@@ -1,4 +1,4 @@
-package com.app.desafiosicredi.core.utils
+package com.app.desafiosicredi.core.utils.helpers
 
 import android.widget.ImageView
 import androidx.core.content.ContextCompat

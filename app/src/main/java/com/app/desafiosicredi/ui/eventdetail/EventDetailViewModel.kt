@@ -3,7 +3,7 @@ package com.app.desafiosicredi.ui.eventdetail
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.app.desafiosicredi.core.base.BaseViewModel
-import com.app.desafiosicredi.core.utils.Event
+import com.app.desafiosicredi.core.utils.helpers.Event
 import com.app.desafiosicredi.data.eventdetail.model.EventDetail
 import com.app.desafiosicredi.data.events.repository.EventsRepository
 import com.haroldadmin.cnradapter.NetworkResponse

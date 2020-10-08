@@ -46,6 +46,32 @@
             bind:imageSet="@{viewModel.eventDetail.peekContent().image}"
             tools:src="@tools:sample/avatars" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btShare"
+            style="@style/ButtonGreen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/small"
+            android:layout_marginTop="@dimen/normal"
+            android:text="@string/share"
+            app:layout_constraintTop_toBottomOf="@+id/item_image"
+            app:layout_constraintEnd_toStartOf="@+id/btCheck"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btCheck"
+            style="@style/ButtonGreen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/small"
+            android:layout_marginTop="@dimen/normal"
+            android:text="@string/check"
+            app:layout_constraintTop_toBottomOf="@+id/item_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btShare" />
+
         <TextView
             android:id="@+id/item_title"
             android:layout_width="wrap_content"
@@ -57,7 +83,7 @@
             android:textSize="@dimen/font_size_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_image"
+            app:layout_constraintTop_toBottomOf="@+id/btCheck"
             tools:lines="1"
             tools:text="@tools:sample/lorem/random" />
 

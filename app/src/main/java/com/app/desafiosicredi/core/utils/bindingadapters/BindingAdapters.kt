@@ -4,7 +4,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.app.desafiosicredi.core.utils.formatDate
-import com.app.desafiosicredi.core.utils.loadImageView
+import com.app.desafiosicredi.core.utils.helpers.loadImageView
 import com.app.desafiosicredi.core.utils.setCurrency
 import java.util.*
 
