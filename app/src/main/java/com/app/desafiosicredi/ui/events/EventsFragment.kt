@@ -1,5 +1,6 @@
 package com.app.desafiosicredi.ui.events
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.app.desafiosicredi.core.utils.extensions.isNetworkAvailable
 import com.app.desafiosicredi.data.events.model.Events
 import com.app.desafiosicredi.databinding.FragmentEventsBinding
 import com.app.desafiosicredi.ui.events.adapter.EventsAdapter
+import com.app.desafiosicredi.ui.main.MainActivity
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -37,6 +39,20 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
                     adapter = setAdapter(events)
                 }
             }
+        })
+
+        viewModel.unknownError.observe(this, EventObserver {
+            if (it) (activity as MainActivity).showSnack(
+                Color.GRAY,
+                getString(R.string.generic_error)
+            )
+        })
+
+        viewModel.serverError.observe(this, EventObserver {
+            if (it) (activity as MainActivity).showSnack(
+                Color.RED,
+                getString(R.string.connection_error)
+            )
         })
     }
 

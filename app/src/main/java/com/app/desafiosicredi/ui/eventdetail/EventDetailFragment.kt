@@ -1,9 +1,11 @@
 package com.app.desafiosicredi.ui.eventdetail
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.app.desafiosicredi.R
@@ -41,6 +43,21 @@ class EventDetailFragment :
 
         viewModel.checkinResponse.observe(this, Observer {
 
+        })
+
+        viewModel.unknownError.observe(this, EventObserver {
+            if (it) (activity as MainActivity).showSnack(
+                ContextCompat.getColor(requireContext(), R.color.colorSecondaryText),
+                getString(R.string.generic_error)
+            )
+        })
+
+        viewModel.serverError.observe(this, EventObserver {
+
+            if (it) (activity as MainActivity).showSnack(
+                ContextCompat.getColor(requireContext(), R.color.red_dark),
+                getString(R.string.connection_error)
+            )
         })
     }
 

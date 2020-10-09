@@ -8,6 +8,8 @@
     <string name="email">E-mail</string>
     <string name="cancel">Cancelar</string>
     <string name="ok">Ok</string>
+    <string name="connection_error">Erro de conexão. Tente novamente.</string>
+    <string name="generic_error">Ops, algo deu errado.</string>
 
     <string name="look_at_this">Olhe este evento</string>
 </resources>
