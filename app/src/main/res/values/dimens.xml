@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <dimen name="none">0dp</dimen>
     <dimen name="nano">2dp</dimen>
     <dimen name="micro">4dp</dimen>
@@ -29,5 +28,4 @@
     <dimen name="font_size_xgiant">34sp</dimen>
     <dimen name="font_size_xxgiant">36sp</dimen>
     <dimen name="font_size_xxxgiant">40sp</dimen>
-
 </resources>

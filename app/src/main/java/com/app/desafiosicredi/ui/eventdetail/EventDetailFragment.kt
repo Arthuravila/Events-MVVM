@@ -50,7 +50,7 @@ class EventDetailFragment :
         bundle.putParcelable("mapArgs", coordinates)
         val transaction = childFragmentManager.beginTransaction()
         transaction.replace(
-            R.id.flMap,
+            R.id.frame_map,
             MapsFragment::class.java,
             bundle,
             "mapArgs"
@@ -59,11 +59,11 @@ class EventDetailFragment :
     }
 
     private fun setListeners() {
-        binding.btShare.setOnClickListener {
+        binding.shareButton.setOnClickListener {
             showShareDialog()
         }
 
-        binding.btCheck.setOnClickListener {
+        binding.checkinButton.setOnClickListener {
             CustomCheckDialog(requireContext()).showDialog {name, email ->
                 viewModel.makeCheckin(name, email, args.eventId)
             }

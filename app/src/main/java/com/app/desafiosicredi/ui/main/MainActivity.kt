@@ -13,7 +13,6 @@ import com.app.desafiosicredi.databinding.ActivityMainBinding
 import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private lateinit var toolBar: MaterialToolbar
 
@@ -43,6 +42,4 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     fun setToolbarIcon() {
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back)
     }
-
-
 }

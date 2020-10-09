@@ -47,7 +47,7 @@
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btShare"
+            android:id="@+id/share_button"
             style="@style/ButtonGreen"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -55,22 +55,22 @@
             android:layout_marginTop="@dimen/normal"
             android:text="@string/share"
             app:layout_constraintTop_toBottomOf="@+id/item_image"
-            app:layout_constraintEnd_toStartOf="@+id/btCheck"
+            app:layout_constraintEnd_toStartOf="@+id/checkin_button"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btCheck"
+            android:id="@+id/checkin_button"
             style="@style/ButtonGreen"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/small"
             android:layout_marginTop="@dimen/normal"
-            android:text="@string/check"
+            android:text="@string/confirm"
             app:layout_constraintTop_toBottomOf="@+id/item_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btShare" />
+            app:layout_constraintStart_toEndOf="@+id/share_button" />
 
         <TextView
             android:id="@+id/item_title"
@@ -83,7 +83,7 @@
             android:textSize="@dimen/font_size_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btCheck"
+            app:layout_constraintTop_toBottomOf="@+id/checkin_button"
             tools:lines="1"
             tools:text="@tools:sample/lorem/random" />
 
@@ -133,7 +133,7 @@
             tools:text="@tools:sample/lorem/random" />
 
         <FrameLayout
-            android:id="@+id/flMap"
+            android:id="@+id/frame_map"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginTop="@dimen/normal"
