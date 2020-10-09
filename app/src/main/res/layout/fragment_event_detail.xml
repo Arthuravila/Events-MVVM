@@ -37,14 +37,29 @@
         <ImageView
             android:id="@+id/item_image"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="200dp"
             android:importantForAccessibility="no"
+            android:background="@color/greyLight"
             android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             bind:imageSet="@{viewModel.eventDetail.peekContent().image}"
             tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/item_title"
+            style="@style/TextTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small"
+            android:text="@{viewModel.eventDetail.peekContent().title}"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_image"
+            tools:lines="1"
+            tools:text="@tools:sample/lorem" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/share_button"
@@ -54,7 +69,7 @@
             android:layout_marginHorizontal="@dimen/small"
             android:layout_marginTop="@dimen/normal"
             android:text="@string/share"
-            app:layout_constraintTop_toBottomOf="@+id/item_image"
+            app:layout_constraintTop_toBottomOf="@+id/item_title"
             app:layout_constraintEnd_toStartOf="@+id/checkin_button"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
@@ -67,68 +82,67 @@
             android:layout_marginHorizontal="@dimen/small"
             android:layout_marginTop="@dimen/normal"
             android:text="@string/confirm"
-            app:layout_constraintTop_toBottomOf="@+id/item_image"
+            app:layout_constraintTop_toBottomOf="@+id/item_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/share_button" />
 
         <TextView
-            android:id="@+id/item_title"
-            android:layout_width="wrap_content"
+            android:id="@+id/item_price"
+            style="@style/TextSubTitleBoldColor"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/normal"
-            android:paddingHorizontal="@dimen/small"
-            android:text="@{viewModel.eventDetail.peekContent().title}"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/font_size_normal"
+            android:paddingHorizontal="@dimen/normal"
+            android:textAlignment="textEnd"
+            bind:currencyText="@{viewModel.eventDetail.peekContent().price}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_date"
             app:layout_constraintTop_toBottomOf="@+id/checkin_button"
             tools:lines="1"
-            tools:text="@tools:sample/lorem/random" />
-
-        <TextView
-            android:id="@+id/item_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/small"
-            android:paddingHorizontal="@dimen/small"
-            bind:currencyText="@{viewModel.eventDetail.peekContent().price}"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="@dimen/font_size_normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_title"
-            tools:lines="1"
-            tools:text="@tools:sample/lorem/random" />
+            tools:text="@tools:sample/lorem" />
 
         <TextView
             android:id="@+id/item_date"
-            android:layout_width="wrap_content"
+            style="@style/TextSubTitleBoldColor"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/normal"
-            android:paddingHorizontal="@dimen/small"
-            bind:date="@{viewModel.eventDetail.peekContent().date}"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/font_size_normal"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingHorizontal="@dimen/normal"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toStartOf="@+id/item_price"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_price"
+            app:layout_constraintTop_toBottomOf="@+id/checkin_button"
+            bind:date="@{viewModel.eventDetail.peekContent().date}"
             tools:lines="1"
-            tools:text="@tools:sample/lorem/random" />
+            tools:text="@tools:sample/date/ddmmyy" />
 
         <TextView
-            android:id="@+id/item_description"
-            android:layout_width="wrap_content"
+            android:id="@+id/item_weekday"
+            style="@style/TextDescriptionBoldColor"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/normal"
-            android:paddingHorizontal="@dimen/small"
-            android:text="@{viewModel.eventDetail.peekContent().description}"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/font_size_normal"
+            android:layout_marginTop="@dimen/micro"
+            android:paddingHorizontal="@dimen/normal"
+            android:textAlignment="textStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_date"
+            bind:weekday="@{viewModel.eventDetail.peekContent().date}"
+            tools:lines="1"
+            tools:text="@tools:sample/date/day_of_week" />
+
+        <TextView
+            android:id="@+id/item_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal"
+            android:paddingHorizontal="@dimen/normal"
+            android:text="@{viewModel.eventDetail.peekContent().description}"
+            style="@style/TextDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_weekday"
             tools:lines="1"
             tools:text="@tools:sample/lorem/random" />
 

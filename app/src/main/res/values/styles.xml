@@ -23,4 +23,27 @@
         <item name="android:paddingBottom">@dimen/normal</item>
         <item name="android:textSize">@dimen/font_size_xnormal</item>
     </style>
+
+    <style name="TextTitle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_size_large</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextSubTitleBoldColor" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/font_size_xxnormal</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextDescription" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_size_normal</item>
+    </style>
+
+    <style name="TextDescriptionBoldColor" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/font_size_xnormal</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

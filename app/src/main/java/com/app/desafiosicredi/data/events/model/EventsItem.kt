@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class EventsItem(
     @SerializedName("date")
-    val date: Int?,
+    val date: Long?,
     @SerializedName("description")
     val description: String?,
     @SerializedName("id")

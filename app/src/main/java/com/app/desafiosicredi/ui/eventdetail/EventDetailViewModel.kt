@@ -18,13 +18,9 @@ class EventDetailViewModel (private val eventsRepository: EventsRepository) : Ba
     private val _checkinResponse = MutableLiveData<CheckinResponse>()
     val checkinResponse = Transformations.map(_checkinResponse) { it }
 
-    private val _progressBarVisibility = MutableLiveData(true)
-    val progressBarVisibility = Transformations.map(_progressBarVisibility) { it }
-
     fun getEventDetail(eventId: String?) = launch {
         when (val response = eventsRepository.getEventDetail(eventId)) {
             is NetworkResponse.Success -> {
-                _progressBarVisibility.postValue(false)
                 _eventDetail.postValue(Event(response.body))
             }
             is NetworkResponse.ServerError -> {
@@ -37,6 +33,7 @@ class EventDetailViewModel (private val eventsRepository: EventsRepository) : Ba
 
             }
         }
+        setProgressBarVisibility(false)
     }
 
 

@@ -6,6 +6,8 @@ import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
+val brazilianLocale = Locale("pt", "BR")
+
 fun setCurrency(price: Double?): String? {
     val format = NumberFormat.getCurrencyInstance()
     format.maximumFractionDigits = 0
@@ -15,10 +17,17 @@ fun setCurrency(price: Double?): String? {
 }
 
 fun formatDate(date: Date?): String? {
-    val brazilianLocale = Locale("pt", "BR")
     val simpleDateFormatDate = SimpleDateFormat("dd/MM/yyyy", brazilianLocale)
     return if (date != null) simpleDateFormatDate.format(date)
     else ""
+}
+
+fun getWeekDay(date: Date?): String? {
+    if (date != null) {
+        val simpleDateFormatWeekDayOfWeek = SimpleDateFormat("EEEE", brazilianLocale)
+        return simpleDateFormatWeekDayOfWeek.format(date).capitalize()
+    }
+    return ""
 }
 
 fun openShareDialog(context: Context, message: String) {
