@@ -3,13 +3,17 @@
     <string name="title_events_fragment">Eventos</string>
     <string name="title_event_detail_fragment">Detalhes</string>
     <string name="share">Compartilhar</string>
+    <string name="checkin">Check-in</string>
     <string name="confirm">Confirmar</string>
+    <string name="success_presence_confirm">Presença confirmada com sucesso!</string>
     <string name="name">Nome</string>
     <string name="email">E-mail</string>
     <string name="cancel">Cancelar</string>
     <string name="ok">Ok</string>
     <string name="connection_error">Erro de conexão. Tente novamente.</string>
     <string name="generic_error">Ops, algo deu errado.</string>
+    <string name="invalid_name">Este nome não é válido.</string>
+    <string name="invalid_email">Este e-mail não é válido.</string>
 
     <string name="look_at_this">Olhe este evento</string>
 </resources>

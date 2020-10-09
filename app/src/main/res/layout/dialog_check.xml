@@ -27,11 +27,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/normal"
             android:gravity="center"
-            android:textSize="@dimen/font_size_large"
+            style="@style/TextSubTitleBoldColor"
+            android:text="@string/checkin"
+            android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="@id/guideEnd"
             app:layout_constraintStart_toStartOf="@id/guideStart"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/confirm" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutName"
@@ -49,7 +50,7 @@
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
+                android:imeOptions="actionNext"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="@dimen/normal" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -70,7 +71,7 @@
                 android:id="@+id/etEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionDone"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="@dimen/normal" />
         </com.google.android.material.textfield.TextInputLayout>

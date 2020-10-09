@@ -9,4 +9,5 @@
     <color name="colorDivider">#BDBDBD</color>
     <color name="greyLight">#EAEAEA</color>
     <color name="redDark">#ffcc0000</color>
+    <color name="greenDark">#3d7324</color>
 </resources>

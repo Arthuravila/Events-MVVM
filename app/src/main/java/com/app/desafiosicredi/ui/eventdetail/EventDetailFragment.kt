@@ -41,7 +41,12 @@ class EventDetailFragment :
         })
 
         viewModel.checkinResponse.observe(this, Observer {
-
+            if (it.code == "200") {
+                (activity as MainActivity).showSnack(
+                    ContextCompat.getColor(requireContext(), R.color.greenDark),
+                    getString(R.string.success_presence_confirm)
+                )
+            }
         })
 
         viewModel.unknownError.observe(this, EventObserver {
@@ -52,7 +57,6 @@ class EventDetailFragment :
         })
 
         viewModel.serverError.observe(this, EventObserver {
-
             if (it) (activity as MainActivity).showSnack(
                 ContextCompat.getColor(requireContext(), R.color.redDark),
                 getString(R.string.connection_error)

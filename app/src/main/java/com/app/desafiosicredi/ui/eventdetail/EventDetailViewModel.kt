@@ -11,7 +11,7 @@ import com.app.desafiosicredi.data.events.repository.EventsRepository
 import com.haroldadmin.cnradapter.NetworkResponse
 import kotlinx.coroutines.launch
 
-class EventDetailViewModel (private val eventsRepository: EventsRepository) : BaseViewModel() {
+class EventDetailViewModel(private val eventsRepository: EventsRepository) : BaseViewModel() {
     private val _eventDetail = MutableLiveData<Event<EventDetail>>()
     val eventDetail = Transformations.map(_eventDetail) { it }
 
@@ -24,13 +24,10 @@ class EventDetailViewModel (private val eventsRepository: EventsRepository) : Ba
                 _eventDetail.postValue(Event(response.body))
             }
             is NetworkResponse.ServerError -> {
-
-            }
-            is NetworkResponse.UnknownError -> {
-
+                setServerError(true)
             }
             else -> {
-
+                setUnknownError(true)
             }
         }
         setProgressBarVisibility(false)
@@ -38,18 +35,16 @@ class EventDetailViewModel (private val eventsRepository: EventsRepository) : Ba
 
 
     fun makeCheckin(name: String, email: String, eventId: String?) = launch {
-        when (val response =  eventsRepository.makeCheckin(CheckinRequestBody(name, email, eventId)) ) {
+        when (val response =
+            eventsRepository.makeCheckin(CheckinRequestBody(name, email, eventId))) {
             is NetworkResponse.Success -> {
-
+                _checkinResponse.postValue(response.body)
             }
             is NetworkResponse.ServerError -> {
-
-            }
-            is NetworkResponse.UnknownError -> {
-
+                setServerError(true)
             }
             else -> {
-
+                setUnknownError(true)
             }
         }
     }
