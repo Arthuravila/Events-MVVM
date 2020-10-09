@@ -7,6 +7,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.SplashScreen" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
     <style name="ErrorAppearance" parent="@android:style/TextAppearance">
         <item name="android:textColor">@android:color/holo_red_dark</item>
         <item name="android:textSize">@dimen/font_size_normal</item>

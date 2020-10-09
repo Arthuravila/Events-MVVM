@@ -8,6 +8,5 @@
     <color name="colorSecondaryText">#757575</color>
     <color name="colorDivider">#BDBDBD</color>
     <color name="greyLight">#EAEAEA</color>
-    <color name="splash_screen_bg">#49862a</color>
-    <color name="red_dark">#ffcc0000</color>
+    <color name="redDark">#ffcc0000</color>
 </resources>

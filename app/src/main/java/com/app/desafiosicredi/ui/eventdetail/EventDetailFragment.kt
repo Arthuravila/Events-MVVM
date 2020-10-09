@@ -1,6 +1,5 @@
 package com.app.desafiosicredi.ui.eventdetail
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,7 +54,7 @@ class EventDetailFragment :
         viewModel.serverError.observe(this, EventObserver {
 
             if (it) (activity as MainActivity).showSnack(
-                ContextCompat.getColor(requireContext(), R.color.red_dark),
+                ContextCompat.getColor(requireContext(), R.color.redDark),
                 getString(R.string.connection_error)
             )
         })
