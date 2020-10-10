@@ -16,7 +16,6 @@ class EventsViewModel (private val eventsRepository: EventsRepository) : BaseVie
     fun getEvents() = launch {
         when (val response = eventsRepository.getEvents()) {
             is NetworkResponse.Success -> {
-
                 _events.postValue(Event(response.body))
             }
             is NetworkResponse.ServerError -> {

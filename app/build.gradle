@@ -67,9 +67,15 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
     // TEST
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$test_ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+    testImplementation "org.koin:koin-test:$koin_test_version"
+    testImplementation "io.mockk:mockk:$mockk_version"
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
+    testImplementation "androidx.arch.core:core-testing:$arch_core_testing_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_test_version"
+    testImplementation "com.google.truth:truth:$truth_version"
 
     // COROUTINES
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutineVersion"
