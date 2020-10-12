@@ -4,7 +4,6 @@
     <string name="title_event_detail_fragment">Detalhes</string>
     <string name="share">Compartilhar</string>
     <string name="checkin">Check-in</string>
-    <string name="confirm">Confirmar</string>
     <string name="success_presence_confirm">Presença confirmada com sucesso!</string>
     <string name="name">Nome</string>
     <string name="email">E-mail</string>

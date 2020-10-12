@@ -63,12 +63,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/share_button"
-            style="@style/ButtonGreen"
+            style="@style/ButtonPrimary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/small"
             android:layout_marginTop="@dimen/normal"
             android:text="@string/share"
+            app:icon="@drawable/ic_baseline_share"
+            app:iconGravity="textStart"
             app:layout_constraintTop_toBottomOf="@+id/item_title"
             app:layout_constraintEnd_toStartOf="@+id/checkin_button"
             app:layout_constraintHorizontal_bias="0.5"
@@ -76,12 +78,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/checkin_button"
-            style="@style/ButtonGreen"
+            style="@style/ButtonPrimary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/small"
             android:layout_marginTop="@dimen/normal"
-            android:text="@string/confirm"
+            android:text="@string/checkin"
+            app:icon="@drawable/ic_baseline_how_to_reg"
+            app:iconGravity="textStart"
             app:layout_constraintTop_toBottomOf="@+id/item_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
