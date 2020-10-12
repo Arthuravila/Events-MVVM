@@ -5,18 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.app.desafiosicredi.ui.eventdetail.EventDetailViewModel" />
     </data>
 
-    <ScrollView
+    <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layoutDescription="@xml/scrollable_header_above_recycler_view_scene">
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -34,130 +32,147 @@
             app:layout_constraintTop_toTopOf="parent"
             bind:progressBarObserver="@{viewModel.progressBarVisibility}" />
 
-        <ImageView
-            android:id="@+id/item_image"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:importantForAccessibility="no"
-            android:background="@color/greyLight"
-            android:scaleType="fitCenter"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            bind:imageSet="@{viewModel.eventDetail.peekContent().image}"
-            tools:src="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/item_title"
-            style="@style/TextTitle"
+            <ImageView
+                android:id="@+id/item_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/greyLight"
+                android:importantForAccessibility="no"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:imageSet="@{viewModel.eventDetail.peekContent().image}"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/item_title"
+                style="@style/TextTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:text="@{viewModel.eventDetail.peekContent().title}"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_image"
+                tools:lines="1"
+                tools:text="@tools:sample/lorem" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/small"
-            android:text="@{viewModel.eventDetail.peekContent().title}"
-            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_image"
-            tools:lines="1"
-            tools:text="@tools:sample/lorem" />
+            app:layout_constraintTop_toBottomOf="@+id/header">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/share_button"
-            style="@style/ButtonPrimary"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/small"
-            android:layout_marginTop="@dimen/normal"
-            android:text="@string/share"
-            app:icon="@drawable/ic_baseline_share"
-            app:iconGravity="textStart"
-            app:layout_constraintTop_toBottomOf="@+id/item_title"
-            app:layout_constraintEnd_toStartOf="@+id/checkin_button"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/share_button"
+                style="@style/ButtonPrimary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/small"
+                android:layout_marginTop="@dimen/normal"
+                android:text="@string/share"
+                app:icon="@drawable/ic_baseline_share"
+                app:iconGravity="textStart"
+                app:layout_constraintEnd_toStartOf="@+id/checkin_button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/checkin_button"
-            style="@style/ButtonPrimary"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/small"
-            android:layout_marginTop="@dimen/normal"
-            android:text="@string/checkin"
-            app:icon="@drawable/ic_baseline_how_to_reg"
-            app:iconGravity="textStart"
-            app:layout_constraintTop_toBottomOf="@+id/item_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/share_button" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/checkin_button"
+                style="@style/ButtonPrimary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/small"
+                android:layout_marginTop="@dimen/normal"
+                android:text="@string/checkin"
+                app:icon="@drawable/ic_baseline_how_to_reg"
+                app:iconGravity="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/share_button"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/item_price"
-            style="@style/TextSubTitleBoldColor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/normal"
-            android:paddingHorizontal="@dimen/normal"
-            android:textAlignment="textEnd"
-            bind:currencyText="@{viewModel.eventDetail.peekContent().price}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/item_date"
-            app:layout_constraintTop_toBottomOf="@+id/checkin_button"
-            tools:lines="1"
-            tools:text="@tools:sample/lorem" />
+            <TextView
+                android:id="@+id/item_price"
+                style="@style/TextSubTitleBoldColor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal"
+                android:paddingHorizontal="@dimen/normal"
+                android:textAlignment="textEnd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/item_date"
+                app:layout_constraintTop_toBottomOf="@+id/checkin_button"
+                bind:currencyText="@{viewModel.eventDetail.peekContent().price}"
+                tools:lines="1"
+                tools:text="@tools:sample/lorem" />
 
-        <TextView
-            android:id="@+id/item_date"
-            style="@style/TextSubTitleBoldColor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/normal"
-            android:paddingHorizontal="@dimen/normal"
-            android:textAlignment="textStart"
-            app:layout_constraintEnd_toStartOf="@+id/item_price"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkin_button"
-            bind:date="@{viewModel.eventDetail.peekContent().date}"
-            tools:lines="1"
-            tools:text="@tools:sample/date/ddmmyy" />
+            <TextView
+                android:id="@+id/item_date"
+                style="@style/TextSubTitleBoldColor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal"
+                android:paddingHorizontal="@dimen/normal"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toStartOf="@+id/item_price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkin_button"
+                bind:date="@{viewModel.eventDetail.peekContent().date}"
+                tools:lines="1"
+                tools:text="@tools:sample/date/ddmmyy" />
 
-        <TextView
-            android:id="@+id/item_weekday"
-            style="@style/TextDescriptionBoldColor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/micro"
-            android:paddingHorizontal="@dimen/normal"
-            android:textAlignment="textStart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_date"
-            bind:weekday="@{viewModel.eventDetail.peekContent().date}"
-            tools:lines="1"
-            tools:text="@tools:sample/date/day_of_week" />
+            <TextView
+                android:id="@+id/item_weekday"
+                style="@style/TextDescriptionBoldColor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/micro"
+                android:paddingHorizontal="@dimen/normal"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_date"
+                bind:weekday="@{viewModel.eventDetail.peekContent().date}"
+                tools:lines="1"
+                tools:text="@tools:sample/date/day_of_week" />
 
-        <TextView
-            android:id="@+id/item_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/normal"
-            android:paddingHorizontal="@dimen/normal"
-            android:text="@{viewModel.eventDetail.peekContent().description}"
-            style="@style/TextDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_weekday"
-            tools:lines="1"
-            tools:text="@tools:sample/lorem/random" />
+            <TextView
+                android:id="@+id/item_description"
+                style="@style/TextDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal"
+                android:paddingHorizontal="@dimen/normal"
+                android:text="@{viewModel.eventDetail.peekContent().description}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_weekday"
+                tools:lines="1"
+                tools:text="@tools:sample/lorem/random" />
 
-        <FrameLayout
-            android:id="@+id/frame_map"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="@dimen/normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_description" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+            <FrameLayout
+                android:id="@+id/frame_map"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="@dimen/normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_description" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

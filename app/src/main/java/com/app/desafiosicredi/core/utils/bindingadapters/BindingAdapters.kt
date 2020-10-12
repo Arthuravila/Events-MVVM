@@ -37,4 +37,3 @@ fun TextView.setDate(date: Long?) {
 fun TextView.setWeekDay(date: Long?) {
     date?.let { this.text = getWeekDay(Date(it * 1000)) }
 }
-
