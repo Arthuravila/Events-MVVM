@@ -27,12 +27,11 @@ class CustomCheckDialog(context: Context) : AlertDialog(context) {
                     binding.etName.text.toString(),
                     binding.etEmailAddress.text.toString()
                 )
-                alertDialog.cancel()
+                alertDialog.dismiss()
             }
-
-            binding.btCancel.setOnClickListener {
-                alertDialog.cancel()
-            }
+        }
+        binding.btCancel.setOnClickListener {
+            alertDialog.dismiss()
         }
         alertDialog.show()
     }
