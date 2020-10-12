@@ -37,7 +37,7 @@ class EventDetailFragment :
 
     override fun subscribeUi() {
         viewModel.eventDetail.observe(this, EventObserver {
-            // setMap(it.latitude, it.longitude)
+            setMap(it.latitude, it.longitude)
         })
 
         viewModel.checkinResponse.observe(this, Observer {
