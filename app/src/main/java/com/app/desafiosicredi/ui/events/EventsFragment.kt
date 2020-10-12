@@ -37,6 +37,7 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
             it.let { events ->
                 with(binding.eventsRecyclerview) {
                     adapter = setAdapter(events)
+                    setHasFixedSize(true)
                 }
             }
         })
