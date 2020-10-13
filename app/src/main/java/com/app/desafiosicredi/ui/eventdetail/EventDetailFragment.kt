@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.app.desafiosicredi.R
 import com.app.desafiosicredi.core.base.BaseFragment
@@ -50,17 +51,23 @@ class EventDetailFragment :
         })
 
         viewModel.unknownError.observe(this, EventObserver {
-            if (it) (activity as MainActivity).showSnack(
-                ContextCompat.getColor(requireContext(), R.color.colorSecondaryText),
-                getString(R.string.generic_error)
-            )
+            if (it) {
+                (activity as MainActivity).showSnack(
+                    ContextCompat.getColor(requireContext(), R.color.colorSecondaryText),
+                    getString(R.string.generic_error)
+                )
+                findNavController().navigateUp()
+            }
         })
 
         viewModel.serverError.observe(this, EventObserver {
-            if (it) (activity as MainActivity).showSnack(
-                ContextCompat.getColor(requireContext(), R.color.redDark),
-                getString(R.string.connection_error)
-            )
+            if (it) {
+                (activity as MainActivity).showSnack(
+                    ContextCompat.getColor(requireContext(), R.color.redDark),
+                    getString(R.string.connection_error)
+                )
+                findNavController().navigateUp()
+            }
         })
     }
 
@@ -84,7 +91,7 @@ class EventDetailFragment :
         }
 
         binding.checkinButton.setOnClickListener {
-            CustomCheckDialog(requireContext()).showDialog {name, email ->
+            CustomCheckDialog(requireContext()).showDialog { name, email ->
                 viewModel.makeCheckin(name, email, args.eventId)
             }
         }

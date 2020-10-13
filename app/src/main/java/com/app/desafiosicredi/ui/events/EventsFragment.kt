@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.app.desafiosicredi.R
 import com.app.desafiosicredi.core.base.BaseFragment
@@ -29,6 +30,7 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
         super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
         getEventsData()
+        setRetryListener()
         return binding.root
     }
 
@@ -43,17 +45,23 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
         })
 
         viewModel.unknownError.observe(this, EventObserver {
-            if (it) (activity as MainActivity).showSnack(
-                Color.GRAY,
-                getString(R.string.generic_error)
-            )
+            if (it) {
+                (activity as MainActivity).showSnack(
+                    Color.GRAY,
+                    getString(R.string.generic_error)
+                )
+                setRetryButtonVisibility(true)
+            }
         })
 
         viewModel.serverError.observe(this, EventObserver {
-            if (it) (activity as MainActivity).showSnack(
-                Color.RED,
-                getString(R.string.connection_error)
-            )
+            if (it) {
+                (activity as MainActivity).showSnack(
+                    Color.RED,
+                    getString(R.string.connection_error)
+                )
+                setRetryButtonVisibility(true)
+            }
         })
     }
 
@@ -70,9 +78,22 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
 
     private fun getEventsData() {
         if (requireContext().isNetworkAvailable()) {
+            setRetryButtonVisibility(false)
             viewModel.getEvents()
         } else {
             Toast.makeText(requireContext(), "SEM CONEXÃO", Toast.LENGTH_LONG).show()
+            setRetryButtonVisibility(true)
+            viewModel.setProgressBarVisibility(false)
+        }
+    }
+
+    private fun setRetryButtonVisibility(visibility: Boolean) {
+        binding.retryButton.isVisible = visibility
+    }
+
+    private fun setRetryListener() {
+        binding.retryButton.setOnClickListener {
+            getEventsData()
         }
     }
 }
