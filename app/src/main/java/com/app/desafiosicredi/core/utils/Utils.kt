@@ -10,14 +10,14 @@ val brazilianLocale = Locale("pt", "BR")
 
 fun setCurrency(price: Double?): String? {
     val format = NumberFormat.getCurrencyInstance()
-    format.maximumFractionDigits = 0
+    format.maximumFractionDigits = 2
     format.currency = Currency.getInstance("BRL")
     return if (price != null) format.format(price)
     else ""
 }
 
 fun formatDate(date: Date?): String? {
-    val simpleDateFormatDate = SimpleDateFormat("dd/MM/yyyy", brazilianLocale)
+    val simpleDateFormatDate = SimpleDateFormat("dd/MM/yyyy HH:mm", brazilianLocale)
     return if (date != null) simpleDateFormatDate.format(date)
     else ""
 }
