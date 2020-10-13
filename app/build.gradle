@@ -70,12 +70,19 @@ dependencies {
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$test_ext_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_core_version"
+    androidTestImplementation "com.google.truth:truth:$truth_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
     testImplementation "org.koin:koin-test:$koin_test_version"
     testImplementation "io.mockk:mockk:$mockk_version"
     testImplementation "org.robolectric:robolectric:$robolectric_version"
     testImplementation "androidx.arch.core:core-testing:$arch_core_testing_version"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_test_version"
     testImplementation "com.google.truth:truth:$truth_version"
+
+    implementation("androidx.fragment:fragment-testing:$fragment_version", {
+        exclude group: 'androidx.test', module: 'core'
+    })
 
     // COROUTINES
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutineVersion"

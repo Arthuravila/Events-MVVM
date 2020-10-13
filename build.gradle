@@ -22,8 +22,10 @@ buildscript {
     ext.mockk_version = '1.10.0'
     ext.robolectric_version = '4.3'
     ext.arch_core_testing_version = '2.1.0'
+    ext.fragment_version = '1.2.5'
     ext.kotlinx_coroutines_test_version = '1.3.9'
     ext.truth_version = '0.44'
+    ext.navigation_version = '2.3.0'
 
     repositories {
         google()

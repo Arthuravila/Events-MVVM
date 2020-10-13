@@ -16,7 +16,7 @@ open class BaseViewModel : ViewModel(), CoroutineScope {
     private val _serverError = MutableLiveData<Event<Boolean>>()
     val serverError = Transformations.map(_serverError) { it }
 
-    private val _progressBarVisibility = MutableLiveData<Boolean>(true)
+    private val _progressBarVisibility = MutableLiveData(true)
     val progressBarVisibility = Transformations.map(_progressBarVisibility) { it }
 
     private val viewModelExceptionHandler =
