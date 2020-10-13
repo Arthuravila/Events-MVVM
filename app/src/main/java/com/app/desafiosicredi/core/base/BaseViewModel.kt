@@ -22,7 +22,7 @@ open class BaseViewModel : ViewModel(), CoroutineScope {
     private val viewModelExceptionHandler =
         CoroutineExceptionHandler { coroutineContext, throwable ->
             Log.d(
-                ">>>CoroutineExcpHndlr",
+                ">>>CoroutineExcpHndler",
                 "coroutineContext: $coroutineContext throwable: ${throwable.printStackTrace()}"
             )
         }

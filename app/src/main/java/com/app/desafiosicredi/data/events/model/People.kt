@@ -15,3 +15,4 @@ data class People(
     @SerializedName("picture")
     val picture: String?
 ): Parcelable
+

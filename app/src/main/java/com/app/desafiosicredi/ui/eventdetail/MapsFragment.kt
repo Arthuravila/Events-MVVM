@@ -15,7 +15,6 @@ import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsFragment : BaseFragment<FragmentMapsBinding>(R.layout.fragment_maps) {
-
     private val callback = OnMapReadyCallback { googleMap ->
         val mapArgs = arguments?.getParcelable<LatLng>("mapArgs")
         googleMap.addMarker(mapArgs?.let { MarkerOptions().position(it).title("Marker in") })

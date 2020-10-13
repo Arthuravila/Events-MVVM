@@ -20,5 +20,4 @@ class EventsRepository (private val apiService: EventsApiService) {
     suspend fun makeCheckin(requestBody: CheckinRequestBody): NetworkResponse<CheckinResponse, ResponseBody> {
         return apiService.makeCheckin(requestBody)
     }
-
 }

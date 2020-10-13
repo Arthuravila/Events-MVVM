@@ -6,16 +6,16 @@ import androidx.databinding.DataBindingUtil
 import com.app.desafiosicredi.R
 import com.app.desafiosicredi.core.utils.extensions.verifyEmail
 import com.app.desafiosicredi.core.utils.extensions.verifyFullName
-import com.app.desafiosicredi.databinding.DialogCheckBinding
+import com.app.desafiosicredi.databinding.DialogCheckinBinding
 
-class CustomCheckDialog(context: Context) : AlertDialog(context) {
+class CustomCheckinDialog(context: Context) : AlertDialog(context) {
     fun showDialog(
         itemClicked: (String, String) -> Unit
     ) {
         val builder = Builder(context)
-        val binding = DataBindingUtil.inflate<DialogCheckBinding>(
+        val binding = DataBindingUtil.inflate<DialogCheckinBinding>(
             layoutInflater,
-            R.layout.dialog_check,
+            R.layout.dialog_checkin,
             null,
             false
         )
@@ -36,7 +36,7 @@ class CustomCheckDialog(context: Context) : AlertDialog(context) {
         alertDialog.show()
     }
 
-    private fun validateFields(binding: DialogCheckBinding): Boolean {
+    private fun validateFields(binding: DialogCheckinBinding): Boolean {
         binding.textInputLayoutName.error = null
         binding.textInputLayoutEmail.error = null
         var isDataValid = true

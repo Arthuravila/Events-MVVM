@@ -15,5 +15,4 @@ class MainApplication : Application() {
             modules(appModules)
         }
     }
-
 }

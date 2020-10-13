@@ -81,7 +81,10 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
             setRetryButtonVisibility(false)
             viewModel.getEvents()
         } else {
-            Toast.makeText(requireContext(), "SEM CONEXÃO", Toast.LENGTH_LONG).show()
+            (activity as MainActivity).showSnack(
+                Color.GRAY,
+                getString(R.string.no_internet)
+            )
             setRetryButtonVisibility(true)
             viewModel.setProgressBarVisibility(false)
         }

@@ -35,5 +35,4 @@ class EventsAdapter(
     inner class EventsViewHolder(
         val recyclerViewItemBinding: ItemListEventsBinding
     ) : RecyclerView.ViewHolder(recyclerViewItemBinding.root)
-
 }

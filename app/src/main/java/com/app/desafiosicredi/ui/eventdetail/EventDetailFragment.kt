@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.app.desafiosicredi.R
 import com.app.desafiosicredi.core.base.BaseFragment
-import com.app.desafiosicredi.core.utils.CustomCheckDialog
+import com.app.desafiosicredi.core.utils.CustomCheckinDialog
 import com.app.desafiosicredi.core.utils.helpers.EventObserver
 import com.app.desafiosicredi.core.utils.openShareDialog
 import com.app.desafiosicredi.databinding.FragmentEventDetailBinding
@@ -91,16 +91,18 @@ class EventDetailFragment :
         }
 
         binding.checkinButton.setOnClickListener {
-            CustomCheckDialog(requireContext()).showDialog { name, email ->
+            CustomCheckinDialog(requireContext()).showDialog { name, email ->
                 viewModel.makeCheckin(name, email, args.eventId)
             }
         }
     }
 
     private fun showShareDialog() {
+        val shareContentText =
+            getString(R.string.look_at_this) + " " + viewModel.eventDetail.value?.peekContent()?.title
         openShareDialog(
             requireContext(),
-            getString(R.string.look_at_this)
+            shareContentText
         )
     }
 }

@@ -1,4 +1,5 @@
 package com.app.desafiosicredi.core.utils.bindingadapters
+
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -33,7 +34,7 @@ fun TextView.setDate(date: Long?) {
     date?.let { this.text = formatDate(Date(it * 1000)) }
 }
 
-@BindingAdapter("bind:weekday")
+@BindingAdapter("bind:weekDay")
 fun TextView.setWeekDay(date: Long?) {
     date?.let { this.text = getWeekDay(Date(it * 1000)) }
 }
