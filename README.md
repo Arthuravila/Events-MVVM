@@ -33,6 +33,7 @@ This is an Android App Sample using MVVM (Model-View-ViewModel) in Kotlin.
   - Follow up Clean Architecture.
   
 ## Sample
+<img src="demo/demo.gif" height="480">
 
 ## License
 MIT
