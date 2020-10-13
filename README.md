@@ -8,26 +8,31 @@ This is an Android App Sample using MVVM (Model-View-ViewModel) in Kotlin.
 
 ## Dependencies
 
-| Coroutines
-| Retrofit 2
-| OkHttp 3
-| Koin
-| Navigation
-| Material Design
-| Glide
-| Google Maps
-| Robolectric
-| Truth
-| Mockk
+ 1. Coroutines
+ 2. Retrofit 2
+ 3. OkHttp 3
+ 4. LiveData
+ 5. Data Binding
+ 6. Koin
+ 7. Navigation
+ 8. Material Design
+ 9. Glide
+ 10. AndroidX
+ 11. Google Maps API
+ 12. Robolectric
+ 13. Truth
+ 14. Mockk
 
 
 ## Features
   - Event listing.
-  - Event details featuring maps, share and checkin options.
-  - Basic testing.
-  - Network
-  - Code done considering Clean Code and according to SOLID (object-oriented design).
+  - Event details featuring Google Maps, Share and CheckIn options.
+  - Basic testing (Unit & UI).
+  - Single-activity architecture, using the Navigation component.
+  - Practical Network approach.
+  - Follow up Clean Architecture.
   
+## Sample
 
 ## License
 MIT
