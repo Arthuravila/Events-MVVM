@@ -18,4 +18,3 @@ inline fun <reified T : ViewDataBinding> T.animateTransitionOnRebind() {
         }
     })
 }
-
