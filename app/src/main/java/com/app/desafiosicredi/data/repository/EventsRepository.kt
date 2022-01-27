@@ -1,10 +1,10 @@
-package com.app.desafiosicredi.data.events.repository
+package com.app.desafiosicredi.data.repository
 
-import com.app.desafiosicredi.data.eventdetail.model.CheckinRequestBody
-import com.app.desafiosicredi.data.eventdetail.model.CheckinResponse
-import com.app.desafiosicredi.data.eventdetail.model.EventDetail
-import com.app.desafiosicredi.data.events.api.EventsApiService
-import com.app.desafiosicredi.data.events.model.Events
+import com.app.desafiosicredi.data.model.eventdetail.CheckinRequestBody
+import com.app.desafiosicredi.data.model.eventdetail.CheckinResponse
+import com.app.desafiosicredi.data.model.eventdetail.EventDetail
+import com.app.desafiosicredi.data.api.EventsApiService
+import com.app.desafiosicredi.domain.model.events.Events
 import com.haroldadmin.cnradapter.NetworkResponse
 import okhttp3.ResponseBody
 

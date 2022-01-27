@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.app.desafiosicredi.core.base.BaseViewModel
 import com.app.desafiosicredi.core.utils.helpers.Event
-import com.app.desafiosicredi.data.events.model.Events
-import com.app.desafiosicredi.data.events.repository.EventsRepository
+import com.app.desafiosicredi.domain.model.events.Events
+import com.app.desafiosicredi.data.repository.EventsRepository
 import com.haroldadmin.cnradapter.NetworkResponse
 import kotlinx.coroutines.launch
 

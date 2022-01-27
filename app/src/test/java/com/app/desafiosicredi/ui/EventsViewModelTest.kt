@@ -1,7 +1,7 @@
 package com.app.desafiosicredi.ui
 
 import android.os.Build
-import com.app.desafiosicredi.data.events.repository.EventsRepository
+import com.app.desafiosicredi.data.repository.EventsRepository
 import com.app.desafiosicredi.ui.events.EventsViewModel
 import io.mockk.coEvery
 import io.mockk.mockk

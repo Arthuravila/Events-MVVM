@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.app.desafiosicredi.core.base.BaseViewModel
 import com.app.desafiosicredi.core.utils.helpers.Event
-import com.app.desafiosicredi.data.eventdetail.model.CheckinRequestBody
-import com.app.desafiosicredi.data.eventdetail.model.CheckinResponse
-import com.app.desafiosicredi.data.eventdetail.model.EventDetail
-import com.app.desafiosicredi.data.events.repository.EventsRepository
+import com.app.desafiosicredi.data.model.eventdetail.CheckinRequestBody
+import com.app.desafiosicredi.data.model.eventdetail.CheckinResponse
+import com.app.desafiosicredi.data.model.eventdetail.EventDetail
+import com.app.desafiosicredi.data.repository.EventsRepository
 import com.haroldadmin.cnradapter.NetworkResponse
 import kotlinx.coroutines.launch
 

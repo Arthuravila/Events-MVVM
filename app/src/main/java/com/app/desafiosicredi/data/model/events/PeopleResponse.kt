@@ -1,11 +1,8 @@
-package com.app.desafiosicredi.data.events.model
+package com.app.desafiosicredi.data.model.events
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-data class People(
+data class PeopleResponse(
     @SerializedName("eventId")
     val eventId: String?,
     @SerializedName("id")
@@ -14,5 +11,5 @@ data class People(
     val name: String?,
     @SerializedName("picture")
     val picture: String?
-): Parcelable
+)
 

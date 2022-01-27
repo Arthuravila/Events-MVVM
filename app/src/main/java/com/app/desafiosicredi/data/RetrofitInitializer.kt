@@ -3,7 +3,7 @@ package com.app.desafiosicredi.data
 
 
 import com.app.desafiosicredi.BuildConfig
-import com.app.desafiosicredi.data.events.api.EventsApiService
+import com.app.desafiosicredi.data.api.EventsApiService
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient

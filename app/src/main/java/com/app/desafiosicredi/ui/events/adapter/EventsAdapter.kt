@@ -1,13 +1,10 @@
 package com.app.desafiosicredi.ui.events.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.app.desafiosicredi.R
-import com.app.desafiosicredi.data.events.model.Events
-import com.app.desafiosicredi.data.events.model.EventsItem
+import com.app.desafiosicredi.domain.model.events.Events
+import com.app.desafiosicredi.domain.model.events.EventsItem
 import com.app.desafiosicredi.databinding.ItemListEventsBinding
 
 class EventsAdapter(

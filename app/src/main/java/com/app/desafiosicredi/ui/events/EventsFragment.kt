@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.app.desafiosicredi.R
 import com.app.desafiosicredi.core.base.BaseFragment
 import com.app.desafiosicredi.core.utils.helpers.EventObserver
 import com.app.desafiosicredi.core.utils.extensions.isNetworkAvailable
-import com.app.desafiosicredi.data.events.model.Events
+import com.app.desafiosicredi.domain.model.events.Events
 import com.app.desafiosicredi.databinding.FragmentEventsBinding
 import com.app.desafiosicredi.ui.events.adapter.EventsAdapter
 import com.app.desafiosicredi.ui.main.MainActivity

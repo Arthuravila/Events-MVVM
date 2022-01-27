@@ -1,7 +1,7 @@
 package com.app.desafiosicredi.core.di
 
 import com.app.desafiosicredi.data.RetrofitInitializer
-import com.app.desafiosicredi.data.events.repository.EventsRepository
+import com.app.desafiosicredi.data.repository.EventsRepository
 import com.app.desafiosicredi.ui.eventdetail.EventDetailViewModel
 import com.app.desafiosicredi.ui.events.EventsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel

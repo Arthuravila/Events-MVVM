@@ -1,7 +1,7 @@
-package com.app.desafiosicredi.data.eventdetail.model
+package com.app.desafiosicredi.data.model.eventdetail
 
 import android.os.Parcelable
-import com.app.desafiosicredi.data.events.model.People
+import com.app.desafiosicredi.domain.model.events.People
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 

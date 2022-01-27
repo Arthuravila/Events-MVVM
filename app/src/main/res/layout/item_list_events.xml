@@ -8,7 +8,7 @@
 
         <variable
             name="item"
-            type="com.app.desafiosicredi.data.events.model.EventsItem" />
+            type="com.app.desafiosicredi.domain.model.events.EventsItem" />
     </data>
 
     <androidx.cardview.widget.CardView

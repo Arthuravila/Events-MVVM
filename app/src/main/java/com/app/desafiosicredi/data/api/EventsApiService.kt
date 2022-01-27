@@ -1,11 +1,11 @@
-package com.app.desafiosicredi.data.events.api
+package com.app.desafiosicredi.data.api
 
 import com.app.desafiosicredi.data.ApiEndPoint.CHECKIN
 import com.app.desafiosicredi.data.ApiEndPoint.EVENTS
-import com.app.desafiosicredi.data.eventdetail.model.CheckinRequestBody
-import com.app.desafiosicredi.data.eventdetail.model.CheckinResponse
-import com.app.desafiosicredi.data.eventdetail.model.EventDetail
-import com.app.desafiosicredi.data.events.model.Events
+import com.app.desafiosicredi.data.model.eventdetail.CheckinRequestBody
+import com.app.desafiosicredi.data.model.eventdetail.CheckinResponse
+import com.app.desafiosicredi.data.model.eventdetail.EventDetail
+import com.app.desafiosicredi.data.model.events.EventsResponse
 import com.haroldadmin.cnradapter.NetworkResponse
 import okhttp3.ResponseBody
 import retrofit2.http.Body
@@ -15,7 +15,7 @@ import retrofit2.http.Path
 
 interface EventsApiService {
     @GET(EVENTS)
-    suspend fun getEvents(): NetworkResponse<Events, ResponseBody>
+    suspend fun getEvents(): NetworkResponse<EventsResponse, ResponseBody>
 
     @GET("$EVENTS{eventId}")
     suspend fun getEventDetail(

@@ -1,11 +1,8 @@
-package com.app.desafiosicredi.data.events.model
+package com.app.desafiosicredi.data.model.events
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-data class EventsItem(
+data class EventsItemResponse(
     @SerializedName("date")
     val date: Long?,
     @SerializedName("description")
@@ -19,9 +16,9 @@ data class EventsItem(
     @SerializedName("longitude")
     val longitude: Double?,
     @SerializedName("people")
-    val people: List<People>?,
+    val people: List<PeopleResponse>?,
     @SerializedName("price")
     val price: Double?,
     @SerializedName("title")
     val title: String?
-) : Parcelable
+)
