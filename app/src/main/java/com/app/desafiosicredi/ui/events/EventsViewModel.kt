@@ -1,31 +1,43 @@
 package com.app.desafiosicredi.ui.events
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.viewModelScope
+import com.app.desafiosicredi.data.Result
 import com.app.desafiosicredi.core.base.BaseViewModel
-import com.app.desafiosicredi.core.utils.helpers.Event
+import com.app.desafiosicredi.data.model.events.EventsResponse
 import com.app.desafiosicredi.domain.model.events.Events
-import com.app.desafiosicredi.data.repository.EventsRepository
-import com.haroldadmin.cnradapter.NetworkResponse
+import com.app.desafiosicredi.data.repository.EventsRepositoryImpl
+import com.app.desafiosicredi.domain.mapper.EventsMapper
 import kotlinx.coroutines.launch
 
-class EventsViewModel(private val eventsRepository: EventsRepository) : BaseViewModel() {
-    private val _events = MutableLiveData<Event<Events>>()
-    val events = Transformations.map(_events) { it }
+class EventsViewModel(private val eventsRepository: EventsRepositoryImpl) : BaseViewModel() {
 
-    fun getEvents() = launch {
-        if (progressBarVisibility.value == false) setProgressBarVisibility(true)
-        when (val response = eventsRepository.getEvents()) {
-            is NetworkResponse.Success -> {
-                _events.postValue(Event(response.body))
+    private val _events = MutableLiveData<Events>()
+    val events : LiveData<Events>
+        get() = _events
+
+    private val mapper: EventsMapper = EventsMapper()
+
+    fun getEvents()  {
+
+        viewModelScope.launch {
+
+            if (progressBarVisibility.value == false) setProgressBarVisibility(true)
+
+            when (val eventsResponse = eventsRepository.getEvents()) {
+                is Result.Success -> {
+                    // errorVisibility.set(GONE)
+                    _events.postValue(eventsResponse.data?.let { mapper.map(it) })
+                }
+                is Result.Error -> {
+                    // errorVisibility.set(VISIBLE)
+                    // errorMessage.value = R.string.server_error
+                }
             }
-            is NetworkResponse.ServerError -> {
-                setServerError(true)
-            }
-            else -> {
-                setUnknownError(true)
-            }
+            setProgressBarVisibility(false)
+
+
         }
-        setProgressBarVisibility(false)
     }
 }

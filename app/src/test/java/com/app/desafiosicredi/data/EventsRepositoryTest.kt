@@ -6,7 +6,7 @@ import com.app.desafiosicredi.data.model.eventdetail.EventDetail
 import com.app.desafiosicredi.data.api.EventsApiService
 import com.app.desafiosicredi.domain.model.events.Events
 import com.app.desafiosicredi.domain.model.events.EventsItem
-import com.app.desafiosicredi.data.repository.EventsRepository
+import com.app.desafiosicredi.data.repository.EventsRepositoryImpl
 import com.google.common.truth.Truth.assertThat
 import com.haroldadmin.cnradapter.NetworkResponse
 import io.mockk.coEvery
@@ -19,7 +19,7 @@ import org.junit.Test
 
 class EventsRepositoryTest {
     private val eventsApi = mockk<EventsApiService>(relaxed = true)
-    private val repository = EventsRepository(eventsApi)
+    private val repository = EventsRepositoryImpl(eventsApi)
 
     private val eventId = "1"
     private val eventsExpected: Events = Events()

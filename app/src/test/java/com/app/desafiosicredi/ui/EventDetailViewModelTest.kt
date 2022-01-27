@@ -1,7 +1,7 @@
 package com.app.desafiosicredi.ui
 
 import android.os.Build
-import com.app.desafiosicredi.data.repository.EventsRepository
+import com.app.desafiosicredi.data.repository.EventsRepositoryImpl
 import com.app.desafiosicredi.ui.eventdetail.EventDetailViewModel
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -14,7 +14,7 @@ import org.robolectric.annotation.Config
 @Config(sdk = [Build.VERSION_CODES.O_MR1])
 @RunWith(RobolectricTestRunner::class)
 class EventDetailViewModelTest {
-    private val mockedEventsRepository = mockk<EventsRepository>(relaxed = true)
+    private val mockedEventsRepository = mockk<EventsRepositoryImpl>(relaxed = true)
 
     private val viewModel = EventDetailViewModel(mockedEventsRepository)
 

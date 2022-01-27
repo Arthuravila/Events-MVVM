@@ -1,9 +1,9 @@
-package com.app.desafiosicredi.data.datasource
+package com.app.desafiosicredi.domain.repository
 
 import com.app.desafiosicredi.data.Result
 import com.app.desafiosicredi.data.model.events.EventsResponse
 
-interface RemoteDataSource {
+interface EventsRepository {
 
     suspend fun getEvents(): Result<EventsResponse>
 }

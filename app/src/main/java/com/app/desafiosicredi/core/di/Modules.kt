@@ -1,7 +1,7 @@
 package com.app.desafiosicredi.core.di
 
 import com.app.desafiosicredi.data.RetrofitInitializer
-import com.app.desafiosicredi.data.repository.EventsRepository
+import com.app.desafiosicredi.data.repository.EventsRepositoryImpl
 import com.app.desafiosicredi.ui.eventdetail.EventDetailViewModel
 import com.app.desafiosicredi.ui.events.EventsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -17,7 +17,7 @@ private val networkModule = module {
 }
 
 private val repositoryModule = module {
-    factory { EventsRepository(get()) }
+    factory { EventsRepositoryImpl(get()) }
 }
 
 val appModules = listOf(viewModelModule, repositoryModule, networkModule)

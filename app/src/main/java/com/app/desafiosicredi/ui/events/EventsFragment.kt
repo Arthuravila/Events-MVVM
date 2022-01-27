@@ -25,43 +25,12 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
         getEventsData()
         setRetryListener()
         return binding.root
-    }
-
-    override fun subscribeUi() {
-        viewModel.events.observe(this, EventObserver {
-            it.let { events ->
-                with(binding.eventsRecyclerview) {
-                    adapter = setAdapter(events)
-                    setHasFixedSize(true)
-                }
-            }
-        })
-
-        viewModel.unknownError.observe(this, EventObserver {
-            if (it) {
-                (activity as MainActivity).showSnack(
-                    Color.GRAY,
-                    getString(R.string.generic_error)
-                )
-                setRetryButtonVisibility(true)
-            }
-        })
-
-        viewModel.serverError.observe(this, EventObserver {
-            if (it) {
-                (activity as MainActivity).showSnack(
-                    Color.RED,
-                    getString(R.string.connection_error)
-                )
-                setRetryButtonVisibility(true)
-            }
-        })
     }
 
     private fun setAdapter(events: Events) = EventsAdapter(events) { item ->

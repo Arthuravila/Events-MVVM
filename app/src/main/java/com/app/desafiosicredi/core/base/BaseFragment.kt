@@ -17,20 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val resId: Int) : Fragment(),
-    CoroutineScope {
-
-    private val fragmentExceptionHandler =
-        CoroutineExceptionHandler { coroutineContext, throwable ->
-            Log.d(
-                ">>>CoroutineExcpHndlr",
-                "coroutineContext: $coroutineContext throwable: ${throwable.printStackTrace()}"
-            )
-        }
-
-    private val job = Job()
-    override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Main + fragmentExceptionHandler
+abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val resId: Int) : Fragment() {
 
     var binding by autoCleared<T>()
 

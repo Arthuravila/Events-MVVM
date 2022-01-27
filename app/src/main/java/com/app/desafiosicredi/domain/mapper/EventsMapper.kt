@@ -1,4 +1,4 @@
-package com.app.desafiosicredi.data.mapper
+package com.app.desafiosicredi.domain.mapper
 
 import com.app.desafiosicredi.core.utils.Mapper
 import com.app.desafiosicredi.data.model.events.EventsItemResponse
