@@ -49,26 +49,6 @@ class EventDetailFragment :
                 )
             }
         })
-
-        viewModel.unknownError.observe(this, EventObserver {
-            if (it) {
-                (activity as MainActivity).showSnack(
-                    ContextCompat.getColor(requireContext(), R.color.colorSecondaryText),
-                    getString(R.string.generic_error)
-                )
-                findNavController().navigateUp()
-            }
-        })
-
-        viewModel.serverError.observe(this, EventObserver {
-            if (it) {
-                (activity as MainActivity).showSnack(
-                    ContextCompat.getColor(requireContext(), R.color.redDark),
-                    getString(R.string.connection_error)
-                )
-                findNavController().navigateUp()
-            }
-        })
     }
 
     private fun setMap(latitude: Double?, longitude: Double?) {

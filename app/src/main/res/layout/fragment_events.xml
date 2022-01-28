@@ -53,7 +53,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            bind:setAdapter="@{viewModel.eventAdapter}"
             tools:listitem="@layout/item_list_events" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

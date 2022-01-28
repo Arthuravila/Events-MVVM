@@ -4,11 +4,22 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.app.desafiosicredi.core.utils.formatDate
 import com.app.desafiosicredi.core.utils.getWeekDay
 import com.app.desafiosicredi.core.utils.helpers.loadImageView
 import com.app.desafiosicredi.core.utils.setCurrency
 import java.util.*
+
+@BindingAdapter("bind:setAdapter")
+fun RecyclerView.setEventsAdapter(rvAdapter: RecyclerView.Adapter<*>?) {
+    rvAdapter?.let { adapter ->
+        this.layoutManager = LinearLayoutManager(this.context)
+        this.adapter = adapter
+        this.adapter?.notifyDataSetChanged()
+    }
+}
 
 @BindingAdapter("bind:progressBarObserver")
 fun setProgressBarObserver(view: View, isVisible: Boolean) {

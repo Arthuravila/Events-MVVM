@@ -1,11 +1,10 @@
 package com.app.desafiosicredi.core.base
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
 import com.app.desafiosicredi.core.utils.helpers.Event
 
-open class BaseViewModel : ViewModel() {
+open class BaseViewModel(app: Application) : AndroidViewModel(app), DefaultLifecycleObserver {
 
     private val _unknownError = MutableLiveData<Event<Boolean>>()
     val unknownError = Transformations.map(_unknownError) { it }

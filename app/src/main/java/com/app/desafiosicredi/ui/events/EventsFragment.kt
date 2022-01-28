@@ -33,15 +33,17 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
         return binding.root
     }
 
-    private fun setAdapter(events: Events) = EventsAdapter(events) { item ->
-        item.id.let { id ->
-            findNavController()
-                .navigate(
-                    EventsFragmentDirections.actionEventsFragmentToEventDetailFragment(
-                        id
-                    )
+    override fun subscribeUi() {
+        viewModel.eventId.observe({ lifecycle }) { id -> id?.let { openEventDetail(it) } }
+    }
+
+    private fun openEventDetail(eventId: String) {
+        findNavController()
+            .navigate(
+                EventsFragmentDirections.actionEventsFragmentToEventDetailFragment(
+                    eventId
                 )
-        }
+            )
     }
 
     private fun getEventsData() {
