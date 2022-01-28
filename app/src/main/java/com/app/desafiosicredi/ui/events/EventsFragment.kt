@@ -28,6 +28,7 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
+
         getEventsData()
         setRetryListener()
         return binding.root
@@ -35,6 +36,10 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
 
     override fun subscribeUi() {
         viewModel.eventId.observe({ lifecycle }) { id -> id?.let { openEventDetail(it) } }
+
+        viewModel.events.observe({ lifecycle }) {
+            viewModel.loadEvents(it)
+        }
     }
 
     private fun openEventDetail(eventId: String) {

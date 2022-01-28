@@ -6,4 +6,5 @@ import com.app.desafiosicredi.data.model.events.EventsResponse
 interface RemoteDataSource {
 
     suspend fun getEvents(): Result<EventsResponse>
+
 }

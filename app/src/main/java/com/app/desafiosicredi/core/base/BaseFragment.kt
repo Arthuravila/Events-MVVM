@@ -34,7 +34,6 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val resId: Int) : Fr
             false
         )
         binding.lifecycleOwner = viewLifecycleOwner
-
         subscribeUi()
         return binding.root
     }
