@@ -30,7 +30,6 @@ class EventDetailFragment :
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
-        (activity as MainActivity).setToolbarIcon()
         viewModel.getEventDetail(args.eventId)
         setListeners()
         return binding.root

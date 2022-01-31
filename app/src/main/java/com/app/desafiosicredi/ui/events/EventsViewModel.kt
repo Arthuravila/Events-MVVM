@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.app.desafiosicredi.data.Result
 import com.app.desafiosicredi.core.base.BaseViewModel
-import com.app.desafiosicredi.data.model.events.EventsResponse
+import com.app.desafiosicredi.core.utils.helpers.SingleLiveEvent
 import com.app.desafiosicredi.domain.model.events.Events
 import com.app.desafiosicredi.data.repository.EventsRepositoryImpl
 import com.app.desafiosicredi.domain.mapper.EventsMapper
@@ -25,7 +25,7 @@ class EventsViewModel(private val eventsRepository: EventsRepositoryImpl) : Base
     val events: LiveData<Events>
         get() = _events
 
-    private val _eventId = MutableLiveData<String>()
+    private val _eventId = SingleLiveEvent<String>()
     val eventId: LiveData<String>
         get() = _eventId
 

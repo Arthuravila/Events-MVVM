@@ -27,7 +27,7 @@ class EventDetailViewModel(private val eventsRepository: EventsRepositoryImpl) :
 
         viewModelScope.launch {
 
-            // if (progressBarVisibility.value == false) setProgressBarVisibility(true)
+            if (progressBarVisibility.value == false) setProgressBarVisibility(true)
 
             val eventDetailResponse = eventsRepository.getEventDetail(eventId)
 
@@ -44,7 +44,7 @@ class EventDetailViewModel(private val eventsRepository: EventsRepositoryImpl) :
                 }
             }
 
-            // setProgressBarVisibility(false)
+            setProgressBarVisibility(false)
         }
 
     }

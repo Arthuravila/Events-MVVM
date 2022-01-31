@@ -9,11 +9,8 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.app.desafiosicredi.R
 import com.app.desafiosicredi.core.base.BaseFragment
-import com.app.desafiosicredi.core.utils.helpers.EventObserver
 import com.app.desafiosicredi.core.utils.extensions.isNetworkAvailable
-import com.app.desafiosicredi.domain.model.events.Events
 import com.app.desafiosicredi.databinding.FragmentEventsBinding
-import com.app.desafiosicredi.ui.events.adapter.EventsAdapter
 import com.app.desafiosicredi.ui.main.MainActivity
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
