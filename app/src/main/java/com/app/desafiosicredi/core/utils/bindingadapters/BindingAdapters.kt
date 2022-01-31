@@ -42,7 +42,7 @@ fun TextView.setTextCurrency(value: Double?) {
 
 @BindingAdapter("bind:date")
 fun TextView.setDate(date: Long?) {
-    date?.let { this.text = formatDate(Date(it * 1000)) }
+    date?.let { this.text = formatDate(Date(it)) }
 }
 
 @BindingAdapter("bind:weekDay")

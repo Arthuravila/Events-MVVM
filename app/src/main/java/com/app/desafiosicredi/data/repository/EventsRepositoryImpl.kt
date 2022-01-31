@@ -2,6 +2,7 @@ package com.app.desafiosicredi.data.repository
 
 import com.app.desafiosicredi.data.Result
 import com.app.desafiosicredi.data.datasource.RemoteDataSource
+import com.app.desafiosicredi.data.model.events.EventsItemResponse
 import com.app.desafiosicredi.data.model.events.EventsResponse
 import com.app.desafiosicredi.domain.repository.EventsRepository
 
@@ -13,11 +14,12 @@ class EventsRepositoryImpl(
         return remoteDataSource.getEvents()
     }
 
-
-/*    suspend fun getEventDetail(eventId: String?): NetworkResponse<EventDetail, ResponseBody> {
-        return apiService.getEventDetail(eventId)
+    override suspend fun getEventDetail(eventId: String?): Result<EventsItemResponse> {
+        return remoteDataSource.getEventDetail(eventId)
     }
 
+
+/*
     suspend fun makeCheckin(requestBody: CheckinRequestBody): NetworkResponse<CheckinResponse, ResponseBody> {
         return apiService.makeCheckin(requestBody)
     }*/

@@ -27,7 +27,7 @@ class EventDetailFragment :
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
         (activity as MainActivity).setToolbarIcon()
@@ -37,9 +37,10 @@ class EventDetailFragment :
     }
 
     override fun subscribeUi() {
-        viewModel.eventDetail.observe(this, EventObserver {
+
+        viewModel.eventDetail.observe({ lifecycle }) {
             setMap(it.latitude, it.longitude)
-        })
+        }
 
         viewModel.checkinResponse.observe(this, Observer {
             if (it.code == "200") {
@@ -79,7 +80,7 @@ class EventDetailFragment :
 
     private fun showShareDialog() {
         val shareContentText =
-            getString(R.string.look_at_this) + " " + viewModel.eventDetail.value?.peekContent()?.title
+            getString(R.string.look_at_this) + " " + viewModel.eventDetail.value?.title
         openShareDialog(
             requireContext(),
             shareContentText

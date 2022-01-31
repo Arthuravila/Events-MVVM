@@ -35,7 +35,11 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
     }
 
     override fun subscribeUi() {
-        viewModel.eventId.observe({ lifecycle }) { id -> id?.let { openEventDetail(it) } }
+        viewModel.eventId.observe({ lifecycle }) { id ->
+            id?.let {
+                openEventDetail(it)
+            }
+        }
 
         viewModel.events.observe({ lifecycle }) {
             viewModel.loadEvents(it)

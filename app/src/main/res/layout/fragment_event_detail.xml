@@ -9,6 +9,7 @@
         <variable
             name="viewModel"
             type="com.app.desafiosicredi.ui.eventdetail.EventDetailViewModel" />
+
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -19,7 +20,7 @@
         app:layoutDescription="@xml/scrollable_header_above_recycler_view_scene">
 
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/progress_bar"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +32,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            bind:progressBarObserver="@{viewModel.progressBarVisibility}" />
 
         <ImageView
             android:id="@+id/item_image"
@@ -43,7 +45,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:imageSet="@{viewModel.eventDetail.peekContent().image}"
+            bind:imageSet="@{viewModel.eventDetail.image}"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -52,7 +54,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small"
-            android:text="@{viewModel.eventDetail.peekContent().title}"
+            android:text="@{viewModel.eventDetail.title}"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +116,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/item_date"
                     app:layout_constraintTop_toTopOf="parent"
-                    bind:currencyText="@{viewModel.eventDetail.peekContent().price}"
+                    bind:currencyText="@{viewModel.eventDetail.price}"
                     tools:lines="1"
                     tools:text="@tools:sample/lorem" />
 
@@ -129,7 +131,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/item_price"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    bind:date="@{viewModel.eventDetail.peekContent().date}"
+                    bind:date="@{viewModel.eventDetail.date}"
                     tools:lines="1"
                     tools:text="@tools:sample/date/ddmmyy" />
 
@@ -144,7 +146,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/item_date"
-                    bind:weekDay="@{viewModel.eventDetail.peekContent().date}"
+                    bind:weekDay="@{viewModel.eventDetail.date}"
                     tools:lines="1"
                     tools:text="@tools:sample/date/day_of_week" />
 
@@ -155,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/normal"
                     android:paddingHorizontal="@dimen/normal"
-                    android:text="@{viewModel.eventDetail.peekContent().description}"
+                    android:text="@{viewModel.eventDetail.description}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/item_weekday"

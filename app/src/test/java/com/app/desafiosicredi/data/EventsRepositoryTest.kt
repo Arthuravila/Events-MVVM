@@ -1,8 +1,7 @@
 package com.app.desafiosicredi.data
 
-import com.app.desafiosicredi.data.model.eventdetail.CheckinRequestBody
-import com.app.desafiosicredi.data.model.eventdetail.CheckinResponse
-import com.app.desafiosicredi.data.model.eventdetail.EventDetail
+import com.app.desafiosicredi.data.model.checkin.CheckinRequestBody
+import com.app.desafiosicredi.data.model.checkin.CheckinResponse
 import com.app.desafiosicredi.data.api.EventsApiService
 import com.app.desafiosicredi.domain.model.events.Events
 import com.app.desafiosicredi.domain.model.events.EventsItem
@@ -34,7 +33,7 @@ class EventsRepositoryTest {
         30.5,
         "Teste"
     )
-    private val eventDetail = EventDetail(
+    private val eventDetail = EventDetailResponse(
         1602296327,
         "Evento",
         "1",
