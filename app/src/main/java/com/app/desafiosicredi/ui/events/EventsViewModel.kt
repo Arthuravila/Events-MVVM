@@ -1,7 +1,5 @@
 package com.app.desafiosicredi.ui.events
 
-import android.app.Application
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -17,9 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class EventsViewModel(private val eventsRepository: EventsRepositoryImpl) : BaseViewModel(
-    Application()
-) {
+class EventsViewModel(private val eventsRepository: EventsRepositoryImpl) : BaseViewModel() {
 
     private val _events = MutableLiveData<Events>()
     val events: LiveData<Events>
@@ -46,16 +42,14 @@ class EventsViewModel(private val eventsRepository: EventsRepositoryImpl) : Base
             withContext(Dispatchers.Main) {
                 when (eventsResponse) {
                     is Result.Success -> {
-                        // errorVisibility.set(GONE)
+                        setErrorState(false)
                         _events.postValue(eventsResponse.data?.let { mapper.map(it) })
                     }
                     is Result.Error -> {
-                        // errorVisibility.set(VISIBLE)
-                        // errorMessage.value = R.string.server_error
+                        setErrorState(true, eventsResponse.errorMessage)
                     }
                 }
             }
-
             setProgressBarVisibility(false)
         }
     }

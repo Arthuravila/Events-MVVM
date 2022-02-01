@@ -21,8 +21,8 @@ fun RecyclerView.setEventsAdapter(rvAdapter: RecyclerView.Adapter<*>?) {
     }
 }
 
-@BindingAdapter("bind:progressBarObserver")
-fun setProgressBarObserver(view: View, isVisible: Boolean) {
+@BindingAdapter("bind:setVisibility")
+fun setVisibility(view: View, isVisible: Boolean) {
     if (isVisible) {
         view.visibility = View.VISIBLE
     } else {

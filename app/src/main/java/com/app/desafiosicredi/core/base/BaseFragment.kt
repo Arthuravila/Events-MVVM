@@ -38,8 +38,5 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val resId: Int) : Fr
         return binding.root
     }
 
-    /**
-     * Override this method to observe livedata objects (optional)
-     */
     open fun subscribeUi() {}
 }

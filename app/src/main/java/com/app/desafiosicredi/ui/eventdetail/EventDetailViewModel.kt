@@ -14,9 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class EventDetailViewModel(private val eventsRepository: EventsRepositoryImpl) : BaseViewModel(
-    Application()
-) {
+class EventDetailViewModel(private val eventsRepository: EventsRepositoryImpl) : BaseViewModel() {
     private val _eventDetail = MutableLiveData<EventsItem>()
     val eventDetail = Transformations.map(_eventDetail) { it }
 

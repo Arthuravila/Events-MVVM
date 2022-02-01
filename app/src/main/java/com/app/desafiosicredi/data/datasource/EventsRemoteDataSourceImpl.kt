@@ -5,9 +5,9 @@ import com.app.desafiosicredi.data.api.EventsApiService
 import com.app.desafiosicredi.data.executeApi
 import com.app.desafiosicredi.data.model.events.EventsItemResponse
 
-class RemoteDataSourceImpl(
+class EventsRemoteDataSourceImpl(
     private val apiService: EventsApiService
-) : RemoteDataSource {
+) : EventsRemoteDataSource {
 
     override suspend fun getEvents() = executeApi { apiService.getEvents() }
 

@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.app.desafiosicredi.R
 import com.app.desafiosicredi.core.base.BaseFragment
 import com.app.desafiosicredi.core.utils.CustomCheckinDialog
-import com.app.desafiosicredi.core.utils.helpers.EventObserver
 import com.app.desafiosicredi.core.utils.openShareDialog
 import com.app.desafiosicredi.databinding.FragmentEventDetailBinding
 import com.app.desafiosicredi.ui.main.MainActivity

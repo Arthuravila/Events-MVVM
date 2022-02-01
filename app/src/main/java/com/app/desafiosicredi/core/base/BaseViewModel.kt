@@ -1,30 +1,33 @@
 package com.app.desafiosicredi.core.base
 
-import android.app.Application
-import androidx.lifecycle.*
-import com.app.desafiosicredi.core.utils.helpers.Event
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-open class BaseViewModel(app: Application) : AndroidViewModel(app), DefaultLifecycleObserver {
 
-    private val _unknownError = MutableLiveData<Event<Boolean>>()
-    val unknownError = Transformations.map(_unknownError) { it }
+open class BaseViewModel() : ViewModel() {
 
-    private val _serverError = MutableLiveData<Event<Boolean>>()
-    val serverError = Transformations.map(_serverError) { it }
+    data class ErrorState(
+        val errorVisibility: Boolean = false,
+        val errorMessage: String? = ""
+    )
 
     private val _progressBarVisibility = MutableLiveData(true)
-    val progressBarVisibility = Transformations.map(_progressBarVisibility) { it }
+    val progressBarVisibility: LiveData<Boolean>
+        get() = _progressBarVisibility
+
+    private val _errorState = MutableLiveData<ErrorState>()
+    val errorState: LiveData<ErrorState>
+        get() = _errorState
 
 
     fun setProgressBarVisibility(isLoading: Boolean) {
         _progressBarVisibility.postValue(isLoading)
     }
 
-    fun setServerError(serverError: Boolean) {
-        _serverError.postValue(Event(serverError))
+    fun setErrorState(errorVisibility: Boolean, errorMessage: String? = null) {
+        _errorState.postValue(ErrorState(errorVisibility, errorMessage))
     }
 
-    fun setUnknownError(unknownError: Boolean) {
-        _unknownError.postValue(Event(unknownError))
-    }
+
 }

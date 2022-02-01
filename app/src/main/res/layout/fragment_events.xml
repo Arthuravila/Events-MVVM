@@ -15,21 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:elevation="2dp"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/colorPrimaryDark"
-            android:outlineProvider="none"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            bind:progressBarObserver="@{viewModel.progressBarVisibility}" />
+        <include
+            layout="@layout/include_loading_error_content"
+            app:progressBarVisibility="@{viewModel.progressBarVisibility.booleanValue()}"
+            app:errorMessage="@{viewModel.errorState.errorMessage}"
+            app:errorVisibility="@{viewModel.errorState.errorVisibility}"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/retry_button"
@@ -55,6 +45,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             bind:setAdapter="@{viewModel.eventAdapter}"
+            android:visibility="gone"
             tools:listitem="@layout/item_list_events" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

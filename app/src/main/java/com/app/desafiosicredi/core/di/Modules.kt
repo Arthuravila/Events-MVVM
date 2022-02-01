@@ -1,10 +1,9 @@
 package com.app.desafiosicredi.core.di
 
 import com.app.desafiosicredi.data.RetrofitInitializer
-import com.app.desafiosicredi.data.datasource.RemoteDataSource
-import com.app.desafiosicredi.data.datasource.RemoteDataSourceImpl
+import com.app.desafiosicredi.data.datasource.EventsRemoteDataSource
+import com.app.desafiosicredi.data.datasource.EventsRemoteDataSourceImpl
 import com.app.desafiosicredi.data.repository.EventsRepositoryImpl
-import com.app.desafiosicredi.domain.repository.EventsRepository
 import com.app.desafiosicredi.ui.eventdetail.EventDetailViewModel
 import com.app.desafiosicredi.ui.events.EventsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -16,7 +15,7 @@ private val viewModelModule = module {
 }
 
 val dataModules = module {
-    factory<RemoteDataSource> { RemoteDataSourceImpl(get()) }
+    factory<EventsRemoteDataSource> { EventsRemoteDataSourceImpl(get()) }
     single { EventsRepositoryImpl(get()) }
 }
 

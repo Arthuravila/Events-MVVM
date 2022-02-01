@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.app.desafiosicredi.R
@@ -25,7 +26,6 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
-
         getEventsData()
         setRetryListener()
         return binding.root
@@ -40,6 +40,16 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
 
         viewModel.events.observe({ lifecycle }) {
             viewModel.loadEvents(it)
+        }
+
+        viewModel.errorState.observe({ lifecycle }) {
+            if (it.errorVisibility) {
+                val errorMsg = it.errorMessage ?: getString(R.string.generic_error)
+                (activity as MainActivity).showSnack(
+                    ContextCompat.getColor(requireContext(), R.color.redDark),
+                    errorMsg
+                )
+            }
         }
     }
 
