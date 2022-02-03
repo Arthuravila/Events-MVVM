@@ -23,16 +23,17 @@ fun RecyclerView.setEventsAdapter(rvAdapter: RecyclerView.Adapter<*>?) {
 
 @BindingAdapter("bind:setVisibility")
 fun setVisibility(view: View, isVisible: Boolean) {
-    if (isVisible) {
-        view.visibility = View.VISIBLE
-    } else {
-        view.visibility = View.GONE
-    }
+    view.visibility = if (isVisible) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("bind:reverseVisibility")
+fun setReverseVisibility(view: View, isVisible: Boolean) {
+    view.visibility = if (isVisible) View.GONE else View.VISIBLE
 }
 
 @BindingAdapter("bind:imageSet")
 fun ImageView.setImageView(imageUrl: String?) {
-        loadImageView(this, imageUrl)
+    loadImageView(this, imageUrl)
 }
 
 @BindingAdapter("bind:currencyText")

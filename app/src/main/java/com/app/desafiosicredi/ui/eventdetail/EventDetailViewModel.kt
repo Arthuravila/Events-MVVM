@@ -1,6 +1,5 @@
 package com.app.desafiosicredi.ui.eventdetail
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
@@ -32,12 +31,11 @@ class EventDetailViewModel(private val eventsRepository: EventsRepositoryImpl) :
             withContext(Dispatchers.Main) {
                 when (eventDetailResponse) {
                     is Result.Success -> {
-                        // errorVisibility.set(GONE)
+                        setErrorState(false)
                         _eventDetail.postValue(eventDetailResponse.data?.toEventsItem())
                     }
                     is Result.Error -> {
-                        // errorVisibility.set(VISIBLE)
-                        // errorMessage.value = R.string.server_error
+                        setErrorState(true, eventDetailResponse.errorMessage)
                     }
                 }
             }

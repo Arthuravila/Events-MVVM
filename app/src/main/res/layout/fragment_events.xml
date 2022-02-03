@@ -45,7 +45,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             bind:setAdapter="@{viewModel.eventAdapter}"
-            android:visibility="gone"
             tools:listitem="@layout/item_list_events" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
