@@ -1,25 +1,30 @@
 package com.app.desafiosicredi.ui.eventdetail
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.app.desafiosicredi.core.base.BaseViewModel
 import com.app.desafiosicredi.data.Result
-import com.app.desafiosicredi.data.model.checkin.CheckinRequestBody
-import com.app.desafiosicredi.data.model.checkin.CheckinResponse
+import com.app.desafiosicredi.data.model.events.CheckinRequestBody
+import com.app.desafiosicredi.data.model.events.CheckinResponse
 import com.app.desafiosicredi.data.repository.EventsRepositoryImpl
 import com.app.desafiosicredi.domain.mapper.toEventsItem
+import com.app.desafiosicredi.domain.model.events.Events
 import com.app.desafiosicredi.domain.model.events.EventsItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class EventDetailViewModel(private val eventsRepository: EventsRepositoryImpl) : BaseViewModel() {
+
     private val _eventDetail = MutableLiveData<EventsItem>()
-    val eventDetail = Transformations.map(_eventDetail) { it }
+    val eventDetail: LiveData<EventsItem>
+        get() = _eventDetail
 
     private val _checkinResponse = MutableLiveData<CheckinResponse>()
-    val checkinResponse = Transformations.map(_checkinResponse) { it }
+    val checkinResponse: LiveData<CheckinResponse>
+        get() = _checkinResponse
 
     fun getEventDetail(eventId: String?) {
 

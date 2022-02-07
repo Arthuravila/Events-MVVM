@@ -2,8 +2,8 @@ package com.app.desafiosicredi.data.api
 
 import com.app.desafiosicredi.data.ApiEndPoint.CHECKIN
 import com.app.desafiosicredi.data.ApiEndPoint.EVENTS
-import com.app.desafiosicredi.data.model.checkin.CheckinRequestBody
-import com.app.desafiosicredi.data.model.checkin.CheckinResponse
+import com.app.desafiosicredi.data.model.events.CheckinRequestBody
+import com.app.desafiosicredi.data.model.events.CheckinResponse
 import com.app.desafiosicredi.data.model.events.EventsItemResponse
 import com.app.desafiosicredi.data.model.events.EventsResponse
 import retrofit2.Response

@@ -6,15 +6,15 @@ import com.app.desafiosicredi.data.model.events.EventsItemResponse
 import com.app.desafiosicredi.data.model.events.EventsResponse
 import com.app.desafiosicredi.data.repository.EventsRepositoryImpl
 import com.app.desafiosicredi.ui.events.EventsViewModel
-import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -53,7 +53,6 @@ class EventsViewModelTest {
 
     private val eventsExpected: EventsResponse = EventsResponse()
 
-
     @Before
     fun setUp() {
         eventsExpected.add(eventItem)
@@ -68,7 +67,8 @@ class EventsViewModelTest {
         testCoroutineDispatcher.cleanupTestCoroutines()
     }
 
-    @Test fun `when get events success should return success`()  = runBlockingTest {
+    @Test
+    fun `when get events success should return success`() = runBlockingTest {
         //Given
         `when`(mockedEventsRepository.getEvents()).thenReturn(getEventsSuccess())
 
@@ -79,5 +79,18 @@ class EventsViewModelTest {
         assertNotNull(viewModel.events.value)
     }
 
+    @Test
+    fun `when get events error should return error`() = runBlockingTest {
+        //Given
+        `when`(mockedEventsRepository.getEvents()).thenReturn(getMockError())
+
+        //When
+        viewModel.getEvents()
+
+        //Then
+        assertTrue(viewModel.errorState.value?.errorVisibility == true)
+    }
+
     private fun getEventsSuccess() = Result.Success(eventsExpected)
+    private fun getMockError() = Result.Error("Algo deu errado")
 }

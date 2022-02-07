@@ -1,4 +1,4 @@
-package com.app.desafiosicredi.data.model.checkin
+package com.app.desafiosicredi.data.model.events
 
 
 import com.google.gson.annotations.SerializedName

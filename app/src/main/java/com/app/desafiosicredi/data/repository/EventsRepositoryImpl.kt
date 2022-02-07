@@ -2,8 +2,8 @@ package com.app.desafiosicredi.data.repository
 
 import com.app.desafiosicredi.data.Result
 import com.app.desafiosicredi.data.datasource.EventsRemoteDataSource
-import com.app.desafiosicredi.data.model.checkin.CheckinRequestBody
-import com.app.desafiosicredi.data.model.checkin.CheckinResponse
+import com.app.desafiosicredi.data.model.events.CheckinRequestBody
+import com.app.desafiosicredi.data.model.events.CheckinResponse
 import com.app.desafiosicredi.data.model.events.EventsItemResponse
 import com.app.desafiosicredi.data.model.events.EventsResponse
 import com.app.desafiosicredi.domain.repository.EventsRepository
