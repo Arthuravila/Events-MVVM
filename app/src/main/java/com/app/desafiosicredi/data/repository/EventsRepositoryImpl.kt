@@ -2,6 +2,8 @@ package com.app.desafiosicredi.data.repository
 
 import com.app.desafiosicredi.data.Result
 import com.app.desafiosicredi.data.datasource.EventsRemoteDataSource
+import com.app.desafiosicredi.data.model.checkin.CheckinRequestBody
+import com.app.desafiosicredi.data.model.checkin.CheckinResponse
 import com.app.desafiosicredi.data.model.events.EventsItemResponse
 import com.app.desafiosicredi.data.model.events.EventsResponse
 import com.app.desafiosicredi.domain.repository.EventsRepository
@@ -18,9 +20,8 @@ class EventsRepositoryImpl(
         return eventsRemoteDataSource.getEventDetail(eventId)
     }
 
+    override suspend fun makeCheckin(requestBody: CheckinRequestBody): Result<CheckinResponse> {
+        return eventsRemoteDataSource.makeCheckin(requestBody)
+    }
 
-/*
-    suspend fun makeCheckin(requestBody: CheckinRequestBody): NetworkResponse<CheckinResponse, ResponseBody> {
-        return apiService.makeCheckin(requestBody)
-    }*/
 }

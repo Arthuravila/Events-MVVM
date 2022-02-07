@@ -39,14 +39,20 @@ class EventDetailFragment :
             setMap(it.latitude, it.longitude)
         }
 
-        viewModel.checkinResponse.observe(this, Observer {
-            if (it.code == "200") {
+        viewModel.checkinResponse.observe({ lifecycle }) {
+            (activity as MainActivity).showSnack(
+                ContextCompat.getColor(requireContext(), R.color.greenDark),
+                getString(R.string.success_presence_confirm)
+            )
+        }
+
+        viewModel.errorState.observe({ lifecycle }) {
+                val errorMsg = it.errorMessage ?: getString(R.string.generic_error)
                 (activity as MainActivity).showSnack(
-                    ContextCompat.getColor(requireContext(), R.color.greenDark),
-                    getString(R.string.success_presence_confirm)
+                    ContextCompat.getColor(requireContext(), R.color.redDark),
+                    errorMsg
                 )
-            }
-        })
+        }
     }
 
     private fun setMap(latitude: Double?, longitude: Double?) {

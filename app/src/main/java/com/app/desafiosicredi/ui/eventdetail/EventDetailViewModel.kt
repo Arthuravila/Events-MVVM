@@ -5,6 +5,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.app.desafiosicredi.core.base.BaseViewModel
 import com.app.desafiosicredi.data.Result
+import com.app.desafiosicredi.data.model.checkin.CheckinRequestBody
 import com.app.desafiosicredi.data.model.checkin.CheckinResponse
 import com.app.desafiosicredi.data.repository.EventsRepositoryImpl
 import com.app.desafiosicredi.domain.mapper.toEventsItem
@@ -47,17 +48,22 @@ class EventDetailViewModel(private val eventsRepository: EventsRepositoryImpl) :
 
 
     fun makeCheckin(name: String, email: String, eventId: String?) {
-/*        when (val response =
-            eventsRepository.makeCheckin(CheckinRequestBody(name, email, eventId))) {
-            is NetworkResponse.Success -> {
-                _checkinResponse.postValue(response.body)
+
+        viewModelScope.launch {
+            val checkinResponse =
+                eventsRepository.makeCheckin(CheckinRequestBody(name, email, eventId))
+
+            withContext(Dispatchers.Main) {
+                when (checkinResponse) {
+                    is Result.Success -> {
+                        setErrorState(false)
+                        _checkinResponse.postValue(checkinResponse.data)
+                    }
+                    is Result.Error -> {
+                        setErrorState(false, checkinResponse.errorMessage)
+                    }
+                }
             }
-            is NetworkResponse.ServerError -> {
-                setServerError(true)
-            }
-            else -> {
-                setUnknownError(true)
-            }
-        }*/
+        }
     }
 }
