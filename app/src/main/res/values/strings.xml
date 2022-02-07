@@ -10,8 +10,7 @@
     <string name="cancel">Cancelar</string>
     <string name="ok">Ok</string>
     <string name="try_again">Tentar novamente</string>
-    <string name="connection_error">Erro de conexão. Tente novamente.</string>
-    <string name="generic_error">Ops, algo deu errado.</string>
+    <string name="generic_error">Ops, algo deu errado.\nTente novamente mais tarde.</string>
     <string name="no_internet">Sem conexão de rede.</string>
     <string name="invalid_name">Este nome não é válido.</string>
     <string name="invalid_email">Este e-mail não é válido.</string>

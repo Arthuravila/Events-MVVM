@@ -2,15 +2,16 @@ package com.app.desafiosicredi.ui.events.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.app.desafiosicredi.domain.model.events.Events
 import com.app.desafiosicredi.domain.model.events.EventsItem
 import com.app.desafiosicredi.databinding.ItemListEventsBinding
 
 class EventsAdapter(
-    private val events: Events,
-    private val itemClicked: (EventsItem) -> Unit
+    private val eventId: MutableLiveData<String>
 ) : RecyclerView.Adapter<EventsAdapter.EventsViewHolder>() {
+
+    private var events = arrayListOf<EventsItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -20,16 +21,20 @@ class EventsAdapter(
 
     override fun getItemCount(): Int = events.size
 
-    override fun onBindViewHolder(viewHolder: EventsViewHolder, position: Int) {
-        val event = events[position]
-        viewHolder.itemView.setOnClickListener { itemClicked(event) }
-        viewHolder.recyclerViewItemBinding.apply {
+    override fun onBindViewHolder(holder: EventsViewHolder, position: Int) = holder.bind(events[position])
+
+    inner class EventsViewHolder(private val binding: ItemListEventsBinding): RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(event: EventsItem) = with(binding) {
             item = event
+            root.setOnClickListener { eventId.postValue(item?.id) }
             executePendingBindings()
         }
     }
 
-    inner class EventsViewHolder(
-        val recyclerViewItemBinding: ItemListEventsBinding
-    ) : RecyclerView.ViewHolder(recyclerViewItemBinding.root)
+    fun addItems(data: List<EventsItem>) {
+        events.addAll(data)
+        notifyDataSetChanged()
+    }
+
 }

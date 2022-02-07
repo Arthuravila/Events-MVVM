@@ -4,7 +4,6 @@ package com.app.desafiosicredi.data
 
 import com.app.desafiosicredi.BuildConfig
 import com.app.desafiosicredi.data.api.EventsApiService
-import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -41,7 +40,6 @@ class RetrofitInitializer : KoinComponent {
     private fun createNetworkClient(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_API_URL)
-            .addCallAdapterFactory(NetworkResponseAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .client(createOkHttpClient())
             .build()

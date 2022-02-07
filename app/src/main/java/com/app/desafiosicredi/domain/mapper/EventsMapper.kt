@@ -11,7 +11,7 @@ import com.app.desafiosicredi.domain.model.events.People
 class EventsMapper: Mapper<EventsResponse, Events> {
 
     override fun map(source: EventsResponse): Events {
-        val items = source.items.map { event -> event.toEventsItem() }
+        val items = source.map { event -> event.toEventsItem() }
         return Events(items.toCollection(ArrayList()))
     }
 }

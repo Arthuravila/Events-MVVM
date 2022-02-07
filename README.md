@@ -21,16 +21,26 @@ This is an Android App Sample using MVVM (Model-View-ViewModel) in Kotlin.
  11. Google Maps API
  12. Robolectric
  13. Truth
- 14. Mockk
+ 14. Mockito
 
 
 ## Features
-  - Event listing.
-  - Event details featuring Google Maps, Share and CheckIn options.
-  - Basic testing (Unit & UI).
-  - Single-activity architecture, using the Navigation component.
-  - Practical Network approach.
-  - Follow up Clean Architecture.
+  - Event listing
+  - Event details featuring Google Maps, Share and CheckIn options
+  - Basic testing
+  - Single-activity architecture, using the Navigation component
+  - Practical Network approach
+  - Follow up Clean Architecture
+
+## Upcoming Improvements
+  - Modularization
+  - MVI (Reactive pattern)
+  - UI testing
+  - Room
+  - Lint
+  - CI 
+  - Flow
+  - Fix Google Maps
   
 ## Sample
 <img src="demo/demo.gif" height="480">

@@ -5,6 +5,9 @@ import com.app.desafiosicredi.data.model.events.EventsItemResponse
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Events(
-    val items: ArrayList<EventsItem>
-) : Parcelable
+class Events() : ArrayList<EventsItem>(), Parcelable {
+
+    constructor(items: ArrayList<EventsItem>) : this() {
+        this.addAll(items)
+    }
+}

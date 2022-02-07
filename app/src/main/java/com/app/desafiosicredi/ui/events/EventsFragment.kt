@@ -5,15 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.app.desafiosicredi.R
 import com.app.desafiosicredi.core.base.BaseFragment
-import com.app.desafiosicredi.core.utils.helpers.EventObserver
 import com.app.desafiosicredi.core.utils.extensions.isNetworkAvailable
-import com.app.desafiosicredi.domain.model.events.Events
 import com.app.desafiosicredi.databinding.FragmentEventsBinding
-import com.app.desafiosicredi.ui.events.adapter.EventsAdapter
 import com.app.desafiosicredi.ui.main.MainActivity
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,15 +31,35 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
         return binding.root
     }
 
-    private fun setAdapter(events: Events) = EventsAdapter(events) { item ->
-        item.id.let { id ->
-            findNavController()
-                .navigate(
-                    EventsFragmentDirections.actionEventsFragmentToEventDetailFragment(
-                        id
-                    )
-                )
+    override fun subscribeUi() {
+        viewModel.eventId.observe({ lifecycle }) { id ->
+            id?.let {
+                openEventDetail(it)
+            }
         }
+
+        viewModel.events.observe({ lifecycle }) {
+            viewModel.loadEvents(it)
+        }
+
+        viewModel.errorState.observe({ lifecycle }) {
+            if (it.errorVisibility) {
+                val errorMsg = it.errorMessage ?: getString(R.string.generic_error)
+                (activity as MainActivity).showSnack(
+                    ContextCompat.getColor(requireContext(), R.color.redDark),
+                    errorMsg
+                )
+            }
+        }
+    }
+
+    private fun openEventDetail(eventId: String) {
+        findNavController()
+            .navigate(
+                EventsFragmentDirections.actionEventsFragmentToEventDetailFragment(
+                    eventId
+                )
+            )
     }
 
     private fun getEventsData() {

@@ -14,14 +14,30 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
+            android:id="@+id/share_button"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_marginTop="@dimen/small"
+            motion:layout_constraintEnd_toStartOf="@+id/checkin_button"
+            motion:layout_constraintHorizontal_bias="0.5"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:visibilityMode="ignore" />
+            motion:layout_constraintTop_toBottomOf="@+id/item_title"
+            motion:visibilityMode= "ignore"/>
+
+        <Constraint
+            android:id="@+id/checkin_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_marginTop="@dimen/small"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toEndOf="@+id/share_button"
+            motion:layout_constraintTop_toBottomOf="@+id/item_title"
+            motion:visibilityMode= "ignore"/>
 
         <Constraint
             android:id="@+id/item_image"
@@ -29,10 +45,35 @@
             android:layout_height="200dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:visibilityMode= "ignore"/>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/share_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_marginTop="@dimen/small"
+            motion:layout_constraintEnd_toStartOf="@+id/checkin_button"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/item_title" />
+
+        <Constraint
+            android:id="@+id/checkin_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_marginTop="@dimen/small"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toEndOf="@+id/share_button"
+            motion:layout_constraintTop_toBottomOf="@+id/item_title" />
+
         <Constraint
             android:id="@+id/item_image"
             android:layout_width="match_parent"

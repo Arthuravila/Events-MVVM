@@ -34,13 +34,9 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes val resId: Int) : Fr
             false
         )
         binding.lifecycleOwner = viewLifecycleOwner
-
         subscribeUi()
         return binding.root
     }
 
-    /**
-     * Override this method to observe livedata objects (optional)
-     */
     open fun subscribeUi() {}
 }

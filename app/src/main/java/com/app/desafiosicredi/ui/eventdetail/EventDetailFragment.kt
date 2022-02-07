@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.app.desafiosicredi.R
 import com.app.desafiosicredi.core.base.BaseFragment
 import com.app.desafiosicredi.core.utils.CustomCheckinDialog
-import com.app.desafiosicredi.core.utils.helpers.EventObserver
 import com.app.desafiosicredi.core.utils.openShareDialog
 import com.app.desafiosicredi.databinding.FragmentEventDetailBinding
 import com.app.desafiosicredi.ui.main.MainActivity
@@ -27,48 +25,34 @@ class EventDetailFragment :
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
-        (activity as MainActivity).setToolbarIcon()
         viewModel.getEventDetail(args.eventId)
         setListeners()
         return binding.root
     }
 
     override fun subscribeUi() {
-        viewModel.eventDetail.observe(this, EventObserver {
+
+        viewModel.eventDetail.observe({ lifecycle }) {
             setMap(it.latitude, it.longitude)
-        })
+        }
 
-        viewModel.checkinResponse.observe(this, Observer {
-            if (it.code == "200") {
-                (activity as MainActivity).showSnack(
-                    ContextCompat.getColor(requireContext(), R.color.greenDark),
-                    getString(R.string.success_presence_confirm)
-                )
-            }
-        })
+        viewModel.checkinResponse.observe({ lifecycle }) {
+            (activity as MainActivity).showSnack(
+                ContextCompat.getColor(requireContext(), R.color.greenDark),
+                getString(R.string.success_presence_confirm)
+            )
+        }
 
-        viewModel.unknownError.observe(this, EventObserver {
-            if (it) {
-                (activity as MainActivity).showSnack(
-                    ContextCompat.getColor(requireContext(), R.color.colorSecondaryText),
-                    getString(R.string.generic_error)
-                )
-                findNavController().navigateUp()
-            }
-        })
-
-        viewModel.serverError.observe(this, EventObserver {
-            if (it) {
+        viewModel.errorState.observe({ lifecycle }) {
+                val errorMsg = it.errorMessage ?: getString(R.string.generic_error)
                 (activity as MainActivity).showSnack(
                     ContextCompat.getColor(requireContext(), R.color.redDark),
-                    getString(R.string.connection_error)
+                    errorMsg
                 )
-                findNavController().navigateUp()
-            }
-        })
+        }
     }
 
     private fun setMap(latitude: Double?, longitude: Double?) {
@@ -99,7 +83,7 @@ class EventDetailFragment :
 
     private fun showShareDialog() {
         val shareContentText =
-            getString(R.string.look_at_this) + " " + viewModel.eventDetail.value?.peekContent()?.title
+            getString(R.string.look_at_this) + " " + viewModel.eventDetail.value?.title
         openShareDialog(
             requireContext(),
             shareContentText
