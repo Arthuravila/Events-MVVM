@@ -1,31 +1,83 @@
 package com.app.desafiosicredi.ui
 
-import android.os.Build
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.app.desafiosicredi.data.Result
+import com.app.desafiosicredi.data.model.events.EventsItemResponse
+import com.app.desafiosicredi.data.model.events.EventsResponse
 import com.app.desafiosicredi.data.repository.EventsRepositoryImpl
 import com.app.desafiosicredi.ui.events.EventsViewModel
-import io.mockk.coEvery
-import io.mockk.mockk
+import junit.framework.Assert.assertNotNull
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
+import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
+import org.junit.runners.JUnit4
+import org.mockito.Mock
+import org.mockito.Mockito.`when`
+import org.mockito.MockitoAnnotations
 
-@Config(sdk = [Build.VERSION_CODES.O_MR1])
-@RunWith(RobolectricTestRunner::class)
+
+@RunWith(JUnit4::class)
+@ExperimentalCoroutinesApi
 class EventsViewModelTest {
-    private val mockedEventsRepository = mockk<EventsRepositoryImpl>(relaxed = true)
 
-    private val viewModel = EventsViewModel(mockedEventsRepository)
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @Test
-    fun onGetEvents_mustShowLoading() {
-        viewModel.progressBarVisibility.value?.let { assert(it).equals(true) }
+    private val testCoroutineDispatcher = TestCoroutineDispatcher()
+
+    @Mock
+    private lateinit var mockedEventsRepository : EventsRepositoryImpl
+
+    private lateinit var viewModel: EventsViewModel
+
+    private val eventItem = EventsItemResponse(
+        1602296327,
+        "Evento",
+        "1",
+        "image.png",
+        20.80,
+        52.25,
+        listOf(),
+        30.5,
+        "Teste"
+    )
+
+    private val eventsExpected: EventsResponse = EventsResponse()
+
+
+    @Before
+    fun setUp() {
+        eventsExpected.add(eventItem)
+        MockitoAnnotations.initMocks(this)
+        viewModel = EventsViewModel(mockedEventsRepository)
+        Dispatchers.setMain(testCoroutineDispatcher)
     }
 
-    @Test
-    fun mustCallGetEvents(): Unit = runBlocking {
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
+        testCoroutineDispatcher.cleanupTestCoroutines()
+    }
+
+    @Test fun `when get events success should return success`()  = runBlockingTest {
+        //Given
+        `when`(mockedEventsRepository.getEvents()).thenReturn(getEventsSuccess())
+
+        //When
         viewModel.getEvents()
-        coEvery { mockedEventsRepository.getEvents() }
+
+        //Then
+        assertNotNull(viewModel.events.value)
     }
+
+    private fun getEventsSuccess() = Result.Success(eventsExpected)
 }
