@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
-import com.app.desafiosicredi.R
+
 import com.app.desafiosicredi.common.base.BaseFragment
 import com.app.desafiosicredi.common.utils.CustomCheckinDialog
 import com.app.desafiosicredi.common.utils.openShareDialog
-import com.app.desafiosicredi.databinding.FragmentEventDetailBinding
-import com.app.desafiosicredi.ui.main.MainActivity
+import com.app.desafiosicredi.events.R
+import com.app.desafiosicredi.events.databinding.FragmentEventDetailBinding
+import com.google.android.gms.maps.model.LatLng
+
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EventDetailFragment :
@@ -38,18 +40,18 @@ class EventDetailFragment :
         }
 
         viewModel.checkinResponse.observe({ lifecycle }) {
-            (activity as MainActivity).showSnack(
+/*            (activity as MainActivity).showSnack(
                 ContextCompat.getColor(requireContext(), R.color.greenDark),
                 getString(R.string.success_presence_confirm)
-            )
+            )*/
         }
 
         viewModel.errorState.observe({ lifecycle }) {
                 val errorMsg = it.errorMessage ?: getString(R.string.generic_error)
-                (activity as MainActivity).showSnack(
+/*                (activity as MainActivity).showSnack(
                     ContextCompat.getColor(requireContext(), R.color.redDark),
                     errorMsg
-                )
+                )*/
         }
     }
 

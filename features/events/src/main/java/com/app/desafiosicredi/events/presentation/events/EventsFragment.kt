@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.app.desafiosicredi.common.base.BaseFragment
 import com.app.desafiosicredi.common.utils.extensions.isNetworkAvailable
 import com.app.desafiosicredi.events.R
@@ -48,12 +49,12 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
     }
 
     private fun openEventDetail(eventId: String) {
-/*        findNavController()
+        findNavController()
             .navigate(
                 EventsFragmentDirections.actionEventsFragmentToEventDetailFragment(
                     eventId
                 )
-            )*/
+            )
     }
 
     private fun getEventsData() {

@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.app.desafiosicredi.ui.eventdetail.EventDetailViewModel" />
+            type="com.app.desafiosicredi.events.presentation.eventdetail.EventDetailViewModel" />
 
     </data>
 

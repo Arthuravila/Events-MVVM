@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.app.desafiosicredi.R
+
 import com.app.desafiosicredi.common.base.BaseFragment
-import com.app.desafiosicredi.databinding.FragmentMapsBinding
+import com.app.desafiosicredi.events.R
+import com.app.desafiosicredi.events.databinding.FragmentMapsBinding
+
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment

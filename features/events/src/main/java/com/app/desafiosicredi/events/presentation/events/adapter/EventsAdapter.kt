@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.app.desafiosicredi.common.domain.model.events.EventsItem
-import com.app.desafiosicredi.databinding.ItemListEventsBinding
+import com.app.desafiosicredi.events.databinding.ItemListEventsBinding
 
 class EventsAdapter(
     private val eventId: MutableLiveData<String>

@@ -1,9 +1,9 @@
-package com.app.desafiosicredi.ui.splash
+package com.app.desafiosicredi.splash
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.app.desafiosicredi.ui.main.MainActivity
+import com.app.desafiosicredi.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 

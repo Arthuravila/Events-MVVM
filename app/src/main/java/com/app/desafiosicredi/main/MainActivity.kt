@@ -1,4 +1,4 @@
-package com.app.desafiosicredi.ui.main
+package com.app.desafiosicredi.main
 
 import android.graphics.Color
 import android.os.Bundle
