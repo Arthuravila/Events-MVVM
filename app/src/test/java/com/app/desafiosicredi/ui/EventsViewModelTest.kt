@@ -1,11 +1,11 @@
 package com.app.desafiosicredi.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.app.desafiosicredi.data.Result
-import com.app.desafiosicredi.data.model.events.EventsItemResponse
-import com.app.desafiosicredi.data.model.events.EventsResponse
-import com.app.desafiosicredi.data.repository.EventsRepositoryImpl
-import com.app.desafiosicredi.ui.events.EventsViewModel
+import com.app.desafiosicredi.common.data.api.Result
+import com.app.desafiosicredi.common.data.api.model.EventsItemResponse
+import com.app.desafiosicredi.common.data.api.model.EventsResponse
+import com.app.desafiosicredi.common.data.repository.EventsRepositoryImpl
+import com.app.desafiosicredi.events.presentation.events.EventsViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher

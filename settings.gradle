@@ -1,2 +1,4 @@
 include ':app'
+include ':common'
+include ':features:events'
 rootProject.name = "Desafio Sicredi"

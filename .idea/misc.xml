@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/app/src/main/res/drawable-v24/splash_screen.xml" value="0.1795" />
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/app/src/main/res/drawable/ic_baseline_arrow_back.xml" value="0.3055555555555556" />
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/app/src/main/res/layout/fragment_event_detail.xml" value="0.33" />
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/app/src/main/res/layout/fragment_events.xml" value="0.3156498673740053" />
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/app/src/main/res/layout/include_loading_error_content.xml" value="0.33" />
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/app/src/main/res/layout/item_list_events.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/common/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1795" />
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/common/src/main/res/drawable/splash_screen.xml" value="0.1425" />
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/common/src/main/res/layout/dialog_checkin.xml" value="0.125" />
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/features/events/src/main/res/layout/fragment_events.xml" value="0.34479166666666666" />
+        <entry key="..\:/Users/SouthSystem/Documents/Android/Events-MVVM/features/events/src/main/res/layout/item_list_events.xml" value="0.34479166666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

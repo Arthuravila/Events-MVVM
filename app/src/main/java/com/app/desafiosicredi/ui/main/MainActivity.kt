@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.app.desafiosicredi.R
-import com.app.desafiosicredi.core.base.BaseActivity
+import com.app.desafiosicredi.common.base.BaseActivity
 import com.app.desafiosicredi.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 

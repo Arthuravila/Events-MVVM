@@ -1,0 +1,128 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_API_URL", "\"http://5f5a8f24d44d640016169133.mockapi.io/\""
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_API_URL", "\"http://5f5a8f24d44d640016169133.mockapi.io/\""
+        }
+    }
+
+    buildFeatures{
+        dataBinding true
+        viewBinding true
+    }
+
+    sourceSets {
+        androidTest {
+            assets.srcDirs = ["src/debug/assets"]
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // KOTLIN
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    // SUPPORT LIBRARIES
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+
+    // NAVIGATION
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // CONSTRAINT LAYOUT
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+
+    // KOIN
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+
+    // UI
+    implementation "com.google.android.material:material:$material_version"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation "com.github.bumptech.glide:okhttp3-integration:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    // SWIPE
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout_version"
+
+    // COROUTINES
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutineVersion"
+
+    // LIFECYCLE
+    implementation "androidx.lifecycle:lifecycle-extensions:$view_model_live_data_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$view_model_live_data_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$view_model_live_data_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$view_model_live_data_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$common_java8_version"
+
+    // MAPS
+    implementation "com.google.android.gms:play-services-maps:$play_services_maps_version"
+    implementation "com.google.maps.android:android-maps-utils:$maps_utils_version"
+
+    // MEMORY LEAKS
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
+
+    // TESTS
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$test_ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_core_version"
+    androidTestImplementation "com.google.truth:truth:$truth_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
+    testImplementation "org.koin:koin-test:$koin_test_version"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_version"
+    testImplementation "org.mockito:mockito-core:$mockito_core_version"
+    testImplementation "org.mockito:mockito-inline:$mockito_inline_version"
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
+    testImplementation "androidx.arch.core:core-testing:$arch_core_testing_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_test_version"
+    testImplementation "com.google.truth:truth:$truth_version"
+
+}
