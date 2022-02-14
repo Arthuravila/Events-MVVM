@@ -17,7 +17,7 @@ import kotlinx.coroutines.withContext
 
 class EventsViewModel(private val eventsRepository: EventsRepositoryImpl) : BaseViewModel() {
 
-    private val _events = MutableLiveData<Events>()
+    private val _events = SingleLiveEvent<Events>()
     val events: LiveData<Events>
         get() = _events
 
@@ -29,7 +29,7 @@ class EventsViewModel(private val eventsRepository: EventsRepositoryImpl) : Base
 
     private val mapper: EventsMapper = EventsMapper()
 
-    fun loadEvents(items: List<EventsItem>) = eventAdapter.addItems(items)
+    fun loadEvents(items: ArrayList<EventsItem>) = eventAdapter.setData(items)
 
     fun getEvents() {
 

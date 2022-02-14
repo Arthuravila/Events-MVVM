@@ -37,7 +37,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             bind:imageSet="@{viewModel.eventDetail.image}"
-            bind:reverseVisibility="@{viewModel.errorState.errorVisibility}"
+            bind:reverseVisibility="@{viewModel.errorState.errorVisibility || viewModel.progressBarVisibility.booleanValue()}"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -67,7 +67,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_title"
-            bind:reverseVisibility="@{viewModel.errorState.errorVisibility}" />
+            bind:reverseVisibility="@{viewModel.errorState.errorVisibility || viewModel.progressBarVisibility.booleanValue()}" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/checkin_button"
@@ -81,7 +81,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/share_button"
             app:layout_constraintTop_toBottomOf="@+id/item_title"
-            bind:reverseVisibility="@{viewModel.errorState.errorVisibility}" />
+            bind:reverseVisibility="@{viewModel.errorState.errorVisibility || viewModel.progressBarVisibility.booleanValue()}" />
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll"
