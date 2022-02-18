@@ -4,16 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
-
 import com.app.desafiosicredi.common.base.BaseFragment
 import com.app.desafiosicredi.common.utils.CustomCheckinDialog
 import com.app.desafiosicredi.common.utils.openShareDialog
 import com.app.desafiosicredi.events.R
 import com.app.desafiosicredi.events.databinding.FragmentEventDetailBinding
 import com.google.android.gms.maps.model.LatLng
-
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EventDetailFragment :
@@ -70,7 +67,7 @@ class EventDetailFragment :
     }
 
     private fun setListeners() {
-        binding.shareButton.setOnClickListener {
+/*        binding.shareButton.setOnClickListener {
             showShareDialog()
         }
 
@@ -78,7 +75,7 @@ class EventDetailFragment :
             CustomCheckinDialog(requireContext()).showDialog { name, email ->
                 viewModel.makeCheckin(name, email, args.eventId)
             }
-        }
+        }*/
     }
 
     private fun showShareDialog() {

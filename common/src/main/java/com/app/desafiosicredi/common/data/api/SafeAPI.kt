@@ -2,16 +2,16 @@ package com.app.desafiosicredi.common.data.api
 
 import retrofit2.Response
 
-suspend fun <T : Any> executeApi(call: suspend () -> Response<T>): Result<T> {
+suspend fun <T : Any> executeApi(call: suspend () -> Response<T>): ApiResult<T> {
     return try {
         val response = call.invoke()
         if (response.isSuccessful) {
-            Result.Success(response.body())
+            ApiResult.Success(response.body())
         } else {
-            Result.Error(response.message())
+            ApiResult.Error(response.message())
         }
 
     } catch (e: Exception) {
-        Result.Error(e.message)
+        ApiResult.Error(e.message)
     }
 }

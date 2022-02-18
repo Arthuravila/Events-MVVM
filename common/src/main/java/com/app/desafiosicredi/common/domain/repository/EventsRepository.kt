@@ -1,6 +1,6 @@
 package com.app.desafiosicredi.common.domain.repository
 
-import com.app.desafiosicredi.common.data.api.Result
+import com.app.desafiosicredi.common.data.api.ApiResult
 import com.app.desafiosicredi.common.data.api.model.CheckinRequestBody
 import com.app.desafiosicredi.common.data.api.model.CheckinResponse
 import com.app.desafiosicredi.common.data.api.model.EventsItemResponse
@@ -8,10 +8,10 @@ import com.app.desafiosicredi.common.data.api.model.EventsResponse
 
 interface EventsRepository {
 
-    suspend fun getEvents(): Result<EventsResponse>
+    suspend fun getEvents(): ApiResult<EventsResponse>
 
-    suspend fun getEventDetail(eventId: String?): Result<EventsItemResponse>
+    suspend fun getEventDetail(eventId: String?): ApiResult<EventsItemResponse>
 
-    suspend fun makeCheckin(requestBody: CheckinRequestBody): Result<CheckinResponse>
+    suspend fun makeCheckin(requestBody: CheckinRequestBody): ApiResult<CheckinResponse>
 
 }

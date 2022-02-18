@@ -1,27 +1,23 @@
 package com.app.desafiosicredi.common.data.repository
 
-import com.app.desafiosicredi.common.data.api.Result
-import com.app.desafiosicredi.common.data.datasource.EventsRemoteDataSource
+import com.app.desafiosicredi.common.data.api.EventsApiService
+import com.app.desafiosicredi.common.data.api.ApiResult
+import com.app.desafiosicredi.common.data.api.executeApi
 import com.app.desafiosicredi.common.data.api.model.CheckinRequestBody
 import com.app.desafiosicredi.common.data.api.model.CheckinResponse
 import com.app.desafiosicredi.common.data.api.model.EventsItemResponse
-import com.app.desafiosicredi.common.data.api.model.EventsResponse
 import com.app.desafiosicredi.common.domain.repository.EventsRepository
 
 class EventsRepositoryImpl(
-    private val eventsRemoteDataSource: EventsRemoteDataSource
+    private val apiService: EventsApiService
 ) : EventsRepository {
 
-    override suspend fun getEvents(): Result<EventsResponse> {
-        return eventsRemoteDataSource.getEvents()
-    }
+    override suspend fun getEvents() = executeApi { apiService.getEvents() }
 
-    override suspend fun getEventDetail(eventId: String?): Result<EventsItemResponse> {
-        return eventsRemoteDataSource.getEventDetail(eventId)
-    }
+    override suspend fun getEventDetail(eventId: String?): ApiResult<EventsItemResponse> =
+        executeApi { apiService.getEventDetail(eventId) }
 
-    override suspend fun makeCheckin(requestBody: CheckinRequestBody): Result<CheckinResponse> {
-        return eventsRemoteDataSource.makeCheckin(requestBody)
-    }
+    override suspend fun makeCheckin(requestBody: CheckinRequestBody): ApiResult<CheckinResponse> =
+        executeApi { apiService.makeCheckin(requestBody) }
 
 }

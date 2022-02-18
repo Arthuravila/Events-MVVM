@@ -4,17 +4,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.app.desafiosicredi.common.base.BaseViewModel
-import com.app.desafiosicredi.common.data.api.Result
+import com.app.desafiosicredi.common.data.api.ApiResult
 import com.app.desafiosicredi.common.data.api.model.CheckinRequestBody
 import com.app.desafiosicredi.common.data.api.model.CheckinResponse
+import com.app.desafiosicredi.common.data.api.model.EventsResponse
+import com.app.desafiosicredi.common.data.dispatchers.EventsDispatcher
 import com.app.desafiosicredi.common.data.repository.EventsRepositoryImpl
+import com.app.desafiosicredi.common.domain.actions.EventsAction
 import com.app.desafiosicredi.common.domain.mapper.toEventsItem
 import com.app.desafiosicredi.common.domain.model.events.EventsItem
+import com.app.desafiosicredi.events.presentation.events.EventsViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class EventDetailViewModel(private val eventsRepository: EventsRepositoryImpl) : BaseViewModel() {
+class EventDetailViewModel(private val dispatcher: EventsDispatcher) :
+    BaseViewModel<EventsViewState, EventsAction, ApiResult<EventsResponse>>() {
+
+    override val internalViewState = EventsViewState()
 
     private val _eventDetail = MutableLiveData<EventsItem>()
     val eventDetail: LiveData<EventsItem>
@@ -26,7 +33,7 @@ class EventDetailViewModel(private val eventsRepository: EventsRepositoryImpl) :
 
     fun getEventDetail(eventId: String?) {
 
-        viewModelScope.launch {
+/*        viewModelScope.launch {
 
             if (progressBarVisibility.value == false) setProgressBarVisibility(true)
 
@@ -34,39 +41,47 @@ class EventDetailViewModel(private val eventsRepository: EventsRepositoryImpl) :
 
             withContext(Dispatchers.Main) {
                 when (eventDetailResponse) {
-                    is Result.Success -> {
+                    is ApiResult.Success -> {
                         setErrorState(false)
                         _eventDetail.postValue(eventDetailResponse.data?.toEventsItem())
                     }
-                    is Result.Error -> {
+                    is ApiResult.Error -> {
                         setErrorState(true, eventDetailResponse.errorMessage)
                     }
                 }
             }
 
             setProgressBarVisibility(false)
-        }
+        }*/
 
     }
 
 
     fun makeCheckin(name: String, email: String, eventId: String?) {
 
-        viewModelScope.launch {
+/*        viewModelScope.launch {
             val checkinResponse =
                 eventsRepository.makeCheckin(CheckinRequestBody(name, email, eventId))
 
             withContext(Dispatchers.Main) {
                 when (checkinResponse) {
-                    is Result.Success -> {
+                    is ApiResult.Success -> {
                         setErrorState(false)
                         _checkinResponse.postValue(checkinResponse.data)
                     }
-                    is Result.Error -> {
+                    is ApiResult.Error -> {
                         setErrorState(false, checkinResponse.errorMessage)
                     }
                 }
             }
-        }
+        }*/
+    }
+
+    override fun handle(action: EventsAction): LiveData<ApiResult<EventsResponse>> {
+        TODO("Not yet implemented")
+    }
+
+    override fun reduce(result: ApiResult<EventsResponse>): EventsViewState {
+        TODO("Not yet implemented")
     }
 }

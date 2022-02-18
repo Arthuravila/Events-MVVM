@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:bind="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.app.desafiosicredi.events.presentation.events.EventsViewModel" />
@@ -17,33 +18,33 @@
 
         <include
             layout="@layout/include_loading_error_content"
-            app:progressBarVisibility="@{viewModel.progressBarVisibility.booleanValue()}"
             app:errorMessage="@{viewModel.errorState.errorMessage}"
-            app:errorVisibility="@{viewModel.errorState.errorVisibility}"/>
+            app:errorVisibility="@{viewModel.errorState.errorVisibility}"
+            app:progressBarVisibility="@{viewModel.viewState.loading}" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/retry_button"
             style="@style/ButtonPrimary"
-            android:padding="@dimen/normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/normal"
             android:text="@string/try_again"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/events_rv"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             bind:setAdapter="@{viewModel.eventAdapter}"
             tools:listitem="@layout/item_list_events" />
 

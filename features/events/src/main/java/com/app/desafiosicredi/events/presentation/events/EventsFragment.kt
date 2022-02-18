@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.app.desafiosicredi.common.base.BaseFragment
+import com.app.desafiosicredi.common.domain.actions.EventsAction
 import com.app.desafiosicredi.common.utils.extensions.isNetworkAvailable
 import com.app.desafiosicredi.events.R
 import com.app.desafiosicredi.events.databinding.FragmentEventsBinding
@@ -33,8 +34,8 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
             }
         }
 
-        viewModel.events.observe({ lifecycle }) {
-            viewModel.loadEvents(it)
+        viewModel.viewState.observe({ lifecycle }) {
+            render(it)
         }
 
         viewModel.errorState.observe({ lifecycle }) {
@@ -45,6 +46,12 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
                     errorMsg
                 )*/
             }
+        }
+    }
+
+    private fun render(eventsViewState: EventsViewState?) {
+        if (eventsViewState != null) {
+            eventsViewState.events?.let { viewModel.loadEvents(it) }
         }
     }
 
@@ -60,7 +67,7 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>(R.layout.fragment_eve
     private fun getEventsData() {
         if (requireContext().isNetworkAvailable()) {
             setRetryButtonVisibility(false)
-            viewModel.getEvents()
+            viewModel.dispatch(EventsAction.GetEventsAction)
         } else {
 /*            (activity as MainActivity).showSnack(
                 Color.GRAY,
